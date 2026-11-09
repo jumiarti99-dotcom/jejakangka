@@ -1,0 +1,3030 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JejakAngka.id - Portal Matematika Terapan & Tracer Study SMKN 3 Pinrang</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 850: '#111827', 950: '#030712' },
+                        cyan: { 450: '#22d3ee' }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 35px -10px rgba(56, 189, 248, 0.35);
+            border-color: rgba(56, 189, 248, 0.5);
+        }
+        .neon-glow-btn {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.55), inset 0 0 10px rgba(56, 189, 248, 0.4);
+        }
+        .neon-glow-btn:hover {
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.75), inset 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+        /* Logo Continuous 360-Degree Rotation & Glow */
+        @keyframes logoRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .logo-rotate-icon {
+            animation: logoRotate 12s linear infinite;
+            transform-origin: center;
+            display: inline-block;
+        }
+        .logo-rotate-icon:hover {
+            animation-duration: 3s;
+            filter: drop-shadow(0 0 25px rgba(34, 211, 238, 1));
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #060d21; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+        @media print {
+            body { background: #ffffff !important; color: #000000 !important; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#050B18] text-slate-100 min-h-screen font-sans selection:bg-cyan-500 selection:text-white flex flex-col relative overflow-x-hidden">
+
+    <!-- TOP NAVIGATION BAR (NEON PILL DESIGN) -->
+    <header class="sticky top-0 z-40 bg-[#050B18]/90 backdrop-blur-xl border-b border-blue-900/30 shadow-[0_4px_30px_rgba(2,132,199,0.15)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+            <!-- Brand Logo (Futuristic Vector SVG + Tagline) -->
+            <div class="flex items-center gap-3 cursor-pointer group" onclick="switchTab('landing')">
+                <svg viewBox="0 0 140 120" class="w-10 h-10 sm:w-11 sm:h-11 drop-shadow-[0_0_15px_rgba(34,211,238,0.7)] group-hover:scale-110 transition-all duration-300 logo-rotate-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoShieldGrad" x1="20" y1="15" x2="105" y2="105" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#38bdf8"/>
+                            <stop offset="50%" stop-color="#0284c7"/>
+                            <stop offset="100%" stop-color="#1e40af"/>
+                        </linearGradient>
+                        <linearGradient id="logoSwooshGrad" x1="10" y1="75" x2="128" y2="25" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#38bdf8"/>
+                            <stop offset="50%" stop-color="#22d3ee"/>
+                            <stop offset="100%" stop-color="#ffffff"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 38 25 C 38 16, 58 14, 70 19 C 82 14, 102 16, 102 25 L 102 74 C 102 84, 80 98, 70 98 C 60 98, 38 84, 38 74 Z" fill="url(#logoShieldGrad)"/>
+                    <path d="M 44 76 Q 70 90 96 76 Q 70 82 44 76 Z" fill="#ffffff"/>
+                    <rect x="49" y="52" width="8" height="18" rx="2" fill="#ffffff"/>
+                    <rect x="62" y="42" width="8" height="28" rx="2" fill="#ffffff"/>
+                    <rect x="75" y="34" width="8" height="36" rx="2" fill="#ffffff"/>
+                    <path d="M 14 70 C 18 88, 56 88, 92 64 C 114 48, 126 34, 114 26 C 104 20, 84 32, 68 46" stroke="url(#logoSwooshGrad)" stroke-width="6.5" stroke-linecap="round"/>
+                    <path d="M 114 24 Q 114 14 120 14 Q 120 24 130 24 Q 120 24 120 34 Q 120 24 114 24 Z" fill="#ffffff"/>
+                </svg>
+                <div>
+                    <h1 class="font-black text-lg sm:text-xl tracking-tight text-white flex items-center gap-0.5 font-sans">
+                        JejakAngka<span class="text-cyan-400 font-extrabold">.id</span>
+                    </h1>
+                    <p class="text-[10px] sm:text-[11px] text-cyan-300/90 font-bold tracking-wide italic flex items-center gap-1">
+                        <span>Simulasi</span> • <span>Analisis</span> • <span>Prestasi</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Main Nav Tabs -->
+            <nav class="hidden lg:flex items-center gap-1.5 bg-[#081028]/90 p-1.5 rounded-full border border-blue-900/50 text-xs font-semibold shadow-inner">
+                <button id="nav-btn-landing" onclick="switchTab('landing')" class="nav-btn px-4 py-2 rounded-full text-white bg-gradient-to-r from-blue-600 to-cyan-500 shadow-[0_0_18px_rgba(37,99,235,0.6)] font-bold transition flex items-center gap-2 border border-cyan-300/40">
+                    <i class="fa-solid fa-house"></i> Beranda
+                </button>
+                <button id="nav-btn-simulator" onclick="switchTab('simulator')" class="nav-btn px-4 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-flask text-cyan-400"></i> Lab & PKL Industri
+                </button>
+                <button id="nav-btn-cards" onclick="switchTab('cards')" class="nav-btn px-4 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-users text-cyan-400"></i> Data Alumni
+                </button>
+                <button id="nav-btn-analytics" onclick="switchTab('analytics')" class="nav-btn px-4 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-cyan-400"></i> Visual Analytics
+                </button>
+                <button id="nav-btn-tracer" onclick="switchTab('tracer')" class="nav-btn px-4 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-user-graduate text-cyan-400"></i> Tracer Study (45 Dtk)
+                </button>
+            </nav>
+
+            <!-- Search Bar & Login Button -->
+            <div class="flex items-center gap-3 flex-shrink-0">
+                <div class="hidden sm:flex items-center relative w-36 md:w-44">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-400 text-xs"></i>
+                    <input type="text" id="topNavSearch" oninput="handleTopNavSearch(this.value)" placeholder="Pencarian..." class="w-full bg-[#081028] border border-blue-900/60 rounded-full pl-9 pr-3 py-1.5 text-xs text-white placeholder-slate-400 outline-none focus:border-cyan-400 transition shadow-inner">
+                </div>
+
+                <div id="userRoleContainer" class="flex items-center gap-2">
+                    <span id="roleBadge" class="hidden px-3.5 py-1.5 rounded-full bg-blue-950 border border-cyan-500/40 text-cyan-300 text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap shadow-sm">
+                        <i id="roleIcon" class="fa-solid fa-graduation-cap text-cyan-400"></i>
+                        <span id="roleLabel" class="text-white font-bold"></span>
+                    </span>
+                    <button id="roleLoginBtn" onclick="openLoginModal()" class="px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(34,211,238,0.4)] border border-cyan-300/50 hover:scale-105 active:scale-95">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Login</span>
+                    </button>
+                    <button id="manageTeachersBtn" onclick="openManageTeachersModal()" class="hidden px-3 py-1.5 rounded-full bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-user-gear text-cyan-400"></i> <span class="hidden sm:inline">Kelola Guru</span>
+                    </button>
+                    <button id="pinChangeBtn" onclick="openChangePinModal()" class="hidden px-3 py-1.5 rounded-full bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/40 text-purple-300 text-xs font-bold transition flex items-center gap-1" title="Ubah PIN">
+                        <i class="fa-solid fa-lock"></i>
+                    </button>
+                    <button id="logoutBtn" onclick="logoutRole()" class="hidden px-3 py-1.5 rounded-full bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-300 text-xs font-bold transition flex items-center gap-1" title="Keluar">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Scrollable Bar -->
+        <div class="lg:hidden flex items-center gap-2 px-4 py-2 bg-[#050B18]/95 border-t border-blue-900/40 overflow-x-auto text-xs font-semibold whitespace-nowrap scrollbar-none">
+            <button id="mob-nav-landing" onclick="switchTab('landing')" class="mob-nav-btn px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold border border-cyan-400/40"><i class="fa-solid fa-house"></i> Beranda</button>
+            <button id="mob-nav-simulator" onclick="switchTab('simulator')" class="mob-nav-btn px-4 py-1.5 rounded-full bg-[#081028] text-slate-300 border border-blue-900/50"><i class="fa-solid fa-flask"></i> Lab & PKL</button>
+            <button id="mob-nav-cards" onclick="switchTab('cards')" class="mob-nav-btn px-4 py-1.5 rounded-full bg-[#081028] text-slate-300 border border-blue-900/50"><i class="fa-solid fa-users"></i> Alumni</button>
+            <button id="mob-nav-analytics" onclick="switchTab('analytics')" class="mob-nav-btn px-4 py-1.5 rounded-full bg-[#081028] text-slate-300 border border-blue-900/50"><i class="fa-solid fa-chart-pie"></i> Analytics</button>
+            <button id="mob-nav-tracer" onclick="switchTab('tracer')" class="mob-nav-btn px-4 py-1.5 rounded-full bg-emerald-600/30 text-emerald-300 border border-emerald-500/40"><i class="fa-solid fa-user-graduate"></i> Tracer Study</button>
+        </div>
+    </header>
+
+    <!-- FLOATING AI ASSISTANT BUTTON -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="toggleAiChat()" class="w-14 h-14 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/50 border-2 border-cyan-300/50 flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300 relative group">
+            <i class="fa-solid fa-robot animate-pulse"></i>
+            <span class="absolute -top-2 -right-1 px-2 py-0.5 bg-red-500 text-white font-extrabold text-[9px] rounded-full border border-slate-950">AI</span>
+        </button>
+    </div>
+
+    <!-- AI CHAT MODAL DRAWER -->
+    <div id="aiChatDrawer" class="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-slate-900/95 backdrop-blur-xl border border-cyan-500/40 rounded-3xl shadow-2xl z-50 hidden flex flex-col overflow-hidden transition-all duration-300">
+        <div class="bg-gradient-to-r from-cyan-950 to-slate-900 p-4 border-b border-slate-800 flex justify-between items-center">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 flex items-center justify-center text-sm">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xs text-white">AI Tutor JejakAngka</h4>
+                    <p class="text-[10px] text-cyan-400">Asisten Matematika Vokasi SMKN 3</p>
+                </div>
+            </div>
+            <button onclick="toggleAiChat()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="aiChatMessages" class="p-4 h-72 overflow-y-auto space-y-3 text-xs">
+            <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 text-slate-300 leading-relaxed">
+                👋 Halo! Saya <strong>AI Tutor JejakAngka</strong>. Ada kendala kalkulasi matematika kejuruan (TKRO, TKJ, DKV, TITL, Akuntansi), penelusuran alumni, tempat PKL, atau pertanyaan bebas apapun? Tanyakan pada saya!
+            </div>
+        </div>
+
+        <!-- SUGGESTED PROMPT CHIPS -->
+        <div class="px-3 py-1.5 bg-slate-950 border-t border-slate-800/60 flex items-center gap-1.5 overflow-x-auto text-[10px] whitespace-nowrap scrollbar-none">
+            <button onclick="sendQuickPrompt('Bagaimana cara menggunakan simulator trigonometri dan BEP?')" class="px-2.5 py-1 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition">💡 Cara pakai simulator</button>
+            <button onclick="sendQuickPrompt('Siapa saja alumni yang bekerja di DUDI?')" class="px-2.5 py-1 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition">🔍 Penelusuran Alumni</button>
+            <button onclick="sendQuickPrompt('Apa saja daftar tempat dan berkas PKL yang tersedia?')" class="px-2.5 py-1 rounded-full bg-purple-950/80 text-purple-300 border border-purple-500/30 hover:bg-purple-500/20 transition">🛠️ Tempat & Berkas PKL</button>
+            <button onclick="sendQuickPrompt('Hitung 150000 * 12 dan jelaskan rumus BEP')" class="px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition">🌐 Tanya Bebas (Hitung/Rumus)</button>
+        </div>
+
+        <div class="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
+            <input type="text" id="aiInput" placeholder="Tanya AI apa saja (Matematika, Alumni, Coding, Umum)..." onkeydown="if(event.key==='Enter') sendAiMessage()" class="flex-grow bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-cyan-500">
+            <button onclick="sendAiMessage()" class="px-3 py-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-xs transition">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTENT AREA -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- ========================================= -->
+        <!-- TAB 1: BERANDA / NEON LANDING -->
+        <!-- ========================================= -->
+        <section id="tab-landing" class="tab-content space-y-10">
+            <div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#06102e] via-[#09153d] to-[#040917] border border-blue-500/30 p-8 sm:p-12 shadow-[0_0_50px_rgba(2,132,199,0.2)]">
+                <div class="absolute -top-24 -left-24 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-600/25 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-left">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/80 border border-cyan-400/40 text-cyan-300 font-bold text-xs shadow-[0_0_15px_rgba(56,189,248,0.25)]">
+                                <i class="fa-solid fa-graduation-cap text-cyan-400"></i> Program 10.000 Karya Digital Guru 2026
+                            </div>
+                        </div>
+
+                        <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">
+                            Menghubungkan <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300 relative inline-block">Rumus Matematika<svg class="absolute -bottom-1 left-0 w-full h-2 text-amber-400" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,15 Q50,5 100,15" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span> dengan Dunia Kerja & Tracer Study
+                        </h2>
+
+                        <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+                            Portal terpadu <strong>SMKN 3 Pinrang</strong> yang mengintegrasikan simulasi kalkulasi matematika terapan DUDI (TKRO, TKJ, DKV, TITL, Akuntansi) dengan sistem penelusuran lulusan (Tracer Study) untuk pembelajaran Statistika kelas presisi.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <button onclick="openSimulatorDirect('trigo')" class="neon-glow-btn px-6 py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 text-white font-extrabold text-xs tracking-wide transition-all duration-300 flex items-center gap-2 border border-cyan-300/60 hover:scale-105 active:scale-95">
+                                <i class="fa-solid fa-rocket"></i> Mulai Sekarang <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </button>
+                            <button onclick="watchVideoModal(1)" class="px-6 py-3.5 rounded-full bg-[#08122c]/90 hover:bg-blue-900/50 text-white font-bold text-xs border border-blue-800/80 transition-all duration-300 flex items-center gap-2 hover:border-cyan-400 hover:scale-105">
+                                <i class="fa-solid fa-play text-cyan-400"></i> Tonton Demo <i class="fa-solid fa-arrow-right text-[10px] ml-1 text-slate-400"></i>
+                            </button>
+                            <button onclick="switchTab('simulator')" class="px-6 py-3.5 rounded-full bg-[#08122c]/90 hover:bg-blue-900/50 text-white font-bold text-xs border border-blue-800/80 transition-all duration-300 flex items-center gap-2 hover:border-cyan-400 hover:scale-105">
+                                <i class="fa-solid fa-book-open text-cyan-400"></i> Pelajari Fitur <i class="fa-solid fa-arrow-right text-[10px] ml-1 text-slate-400"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 relative flex justify-center items-center">
+                        <div class="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-tr from-blue-950/80 via-slate-900/90 to-cyan-950/60 border border-cyan-500/30 p-6 flex flex-col justify-between shadow-[0_0_40px_rgba(2,132,199,0.3)] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/081028/38bdf8?text=SMKN+3+Pinrang'" alt="SMKN 3 Pinrang" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-overlay">
+                            
+                            <div class="relative z-10 flex justify-between items-center">
+                                <div class="px-3 py-1.5 rounded-xl bg-blue-950/90 border border-cyan-400/50 text-cyan-300 text-xs font-mono font-bold flex items-center gap-2 shadow-lg">
+                                    <i class="fa-solid fa-calculator text-cyan-400"></i>
+                                    <span>∑ π + ÷</span>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-bold uppercase">SMKN 3 Pinrang</span>
+                            </div>
+
+                            <div class="relative z-10 my-auto text-center space-y-3">
+                                <div class="relative inline-block">
+                                    <i class="fa-solid fa-laptop-code text-7xl text-transparent bg-clip-text bg-gradient-to-tr from-cyan-400 via-blue-400 to-indigo-300 drop-shadow-[0_0_25px_rgba(34,211,238,0.8)]"></i>
+                                    <div class="absolute -top-4 -right-4 w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-600 text-slate-950 flex items-center justify-center text-lg font-black shadow-lg shadow-amber-500/50 animate-bounce">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <h4 class="font-extrabold text-lg text-white">Visual Analytics & Simulator</h4>
+                                    <p class="text-xs text-cyan-300 font-medium">Matematika Vokasi x Presisi Industri</p>
+                                </div>
+                            </div>
+
+                            <div class="relative z-10 p-3 rounded-2xl bg-slate-950/90 border border-blue-900/60 flex items-center justify-between text-xs">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-chart-line-up"></i>
+                                    </div>
+                                    <span class="font-bold text-slate-200">Keterisian Tracer Study</span>
+                                </div>
+                                <span class="font-black text-emerald-400 text-sm">94.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 QUICK-ACTION FEATURE CARDS GRID -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-10 mt-6 border-t border-blue-900/40">
+                    <div onclick="openSimulatorDirect('trigo')" class="glass-card glass-card-hover p-4 rounded-2xl border border-blue-900/60 cursor-pointer flex items-center gap-3.5 group">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/40 text-cyan-400 flex items-center justify-center text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="space-y-0.5 min-w-0">
+                            <h4 class="font-black text-xs text-white group-hover:text-cyan-400 transition truncate">Simulator Trigonometri</h4>
+                            <p class="text-[11px] text-slate-400 truncate flex items-center gap-1">Hitung & Analisis <i class="fa-solid fa-arrow-right text-[9px] text-cyan-400"></i></p>
+                        </div>
+                    </div>
+
+                    <div onclick="openSimulatorDirect('bep')" class="glass-card glass-card-hover p-4 rounded-2xl border border-blue-900/60 cursor-pointer flex items-center gap-3.5 group">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-600/20 border border-purple-500/40 text-purple-400 flex items-center justify-center text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div class="space-y-0.5 min-w-0">
+                            <h4 class="font-black text-xs text-white group-hover:text-purple-400 transition truncate">Simulator BEP Usaha</h4>
+                            <p class="text-[11px] text-slate-400 truncate flex items-center gap-1">Rencanakan Keuntungan <i class="fa-solid fa-arrow-right text-[9px] text-purple-400"></i></p>
+                        </div>
+                    </div>
+
+                    <div onclick="openSimulatorDirect('pkl')" class="glass-card glass-card-hover p-4 rounded-2xl border border-blue-900/60 cursor-pointer flex items-center gap-3.5 group">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <div class="space-y-0.5 min-w-0">
+                            <h4 class="font-black text-xs text-white group-hover:text-emerald-400 transition truncate">Portal PKL & Sertifikat</h4>
+                            <p class="text-[11px] text-slate-400 truncate flex items-center gap-1">Kelola Berkas & Sertifikat <i class="fa-solid fa-arrow-right text-[9px] text-emerald-400"></i></p>
+                        </div>
+                    </div>
+
+                    <div onclick="switchTab('tracer')" class="glass-card glass-card-hover p-4 rounded-2xl border border-blue-900/60 cursor-pointer flex items-center gap-3.5 group">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(245,158,11,0.4)]">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div class="space-y-0.5 min-w-0">
+                            <h4 class="font-black text-xs text-white group-hover:text-amber-400 transition truncate">Isi Form Tracer (45 Dtk)</h4>
+                            <p class="text-[11px] text-slate-400 truncate flex items-center gap-1">Cepat, Mudah, Akurat <i class="fa-solid fa-arrow-right text-[9px] text-amber-400"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center justify-center pt-6 text-slate-400 text-xs gap-1 cursor-pointer hover:text-cyan-400 transition" onclick="window.scrollTo({top: 500, behavior: 'smooth'})">
+                    <div class="w-7 h-7 rounded-full bg-slate-900 border border-blue-900/80 flex items-center justify-center text-xs animate-bounce">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+                    <span class="text-[11px] font-medium">Scroll untuk menjelajah</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- TAB 2: LAB & PKL INDUSTRI -->
+        <!-- ========================================= -->
+        <section id="tab-simulator" class="tab-content hidden space-y-6">
+            <div class="flex flex-wrap items-center justify-between border-b border-slate-800 pb-4 gap-3">
+                <div>
+                    <h3 class="text-lg font-black text-white">Lab Matematika Terapan & Portal PKL Industri</h3>
+                    <p class="text-xs text-slate-400">Pilih simulator materi kejuruan atau eksplorasi matematika persiapan PKL</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button id="subnav-btn-materials" onclick="showSimSubTab('materials')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-cyan-600 text-white transition">
+                        <i class="fa-solid fa-book-open"></i> Modul & Video
+                    </button>
+                    <button id="subnav-btn-pkl" onclick="showSimSubTab('pkl')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-400 hover:text-white transition">
+                        <i class="fa-solid fa-briefcase"></i> Jurnal Presisi PKL & DUDI
+                    </button>
+                    <button id="subnav-btn-trigo" onclick="showSimSubTab('trigo')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-400 hover:text-white transition">
+                        <i class="fa-solid fa-ruler-combined"></i> Simulator Trigonometri
+                    </button>
+                    <button id="subnav-btn-bep" onclick="showSimSubTab('bep')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-400 hover:text-white transition">
+                        <i class="fa-solid fa-calculator"></i> Simulator BEP Usaha
+                    </button>
+                </div>
+            </div>
+
+            <!-- SUBTAB 1: MATERI & VIDEO -->
+            <div id="subtab-materials" class="space-y-6">
+                <div id="teacherMaterialControls" class="hidden flex justify-between items-center bg-cyan-950/40 p-4 rounded-2xl border border-cyan-500/30">
+                    <div class="text-xs text-cyan-300">
+                        <i class="fa-solid fa-user-shield"></i> <strong>Akses Guru / Admin:</strong> Anda berwenang menambah, mengedit, atau menghapus materi pembelajaran.
+                    </div>
+                    <button onclick="openAddMaterialModal()" class="px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs hover:bg-cyan-400 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-plus"></i> Tambah Materi Baru
+                    </button>
+                </div>
+
+                <div id="materialsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+            </div>
+
+            <!-- SUBTAB 2: JURNAL PKL & REKOMENDASI DUDI -->
+            <div id="subtab-pkl" class="hidden space-y-6">
+                <div class="glass-card p-5 rounded-2xl border border-purple-500/40 bg-purple-950/20 space-y-3">
+                    <h4 class="font-bold text-purple-300 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase"></i> 🛠️ Matematika Terapan & Repository PKL Industri
+                    </h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Manajemen terpadu Praktik Kerja Lapangan: Unduh modul pembekalan, templat laporan, kalkulasi RAB industri, serta pencarian & unduh <strong>Sertifikat PKL Alumni</strong>.
+                    </p>
+                </div>
+
+                <div id="teacherPklControls" class="hidden flex flex-wrap justify-between items-center bg-purple-950/40 p-4 rounded-2xl border border-purple-500/30 gap-3">
+                    <div class="text-xs text-purple-300 flex items-center gap-2">
+                        <i class="fa-solid fa-user-shield"></i> <strong>Kelola PKL (Guru/Admin):</strong> Unggah materi pembekalan, draf laporan, dan sertifikat PKL alumni.
+                    </div>
+                    <button onclick="openPklDocModal()" class="px-4 py-2 rounded-xl bg-purple-500 text-white font-bold text-xs hover:bg-purple-400 transition flex items-center gap-1.5 shadow-lg shadow-purple-500/20">
+                        <i class="fa-solid fa-file-circle-plus"></i> Upload Dokumentasi / Sertifikat PKL
+                    </button>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-[10px] font-bold">Repository & Sertifikasi</span>
+                            <h4 class="text-base font-black text-white mt-1">Materi, Laporan & Sertifikat PKL Alumni</h4>
+                        </div>
+                        <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+                            <input type="text" id="pklSearchInput" oninput="renderPklDocs()" placeholder="Cari nama alumni / materi / jurusan..." class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white outline-none focus:border-purple-500">
+                            <select id="pklTypeFilter" onchange="renderPklDocs()" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white outline-none focus:border-purple-500 font-bold">
+                                <option value="ALL">Semua Berkas</option>
+                                <option value="sertifikat">Sertifikat PKL</option>
+                                <option value="materi">Materi Pembekalan</option>
+                                <option value="laporan">Format Laporan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="pklDocsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-7 glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-[10px] font-bold">Kalkulator Jurnal PKL</span>
+                            <h4 class="text-base font-black text-white mt-1">Estimasi RAB & Pemborosan Bahan Industri</h4>
+                        </div>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="space-y-1">
+                                    <label class="text-slate-400 font-semibold">Harga Bahan Baku Utama (Rp):</label>
+                                    <input type="number" id="pklHargaBahan" value="150000" oninput="calcPklRab()" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold outline-none focus:border-purple-500">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-slate-400 font-semibold">Jumlah Estimasi Pemakaian Unit:</label>
+                                    <input type="number" id="pklQtyBahan" value="12" oninput="calcPklRab()" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold outline-none focus:border-purple-500">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="space-y-1">
+                                    <label class="text-slate-400 font-semibold">Persentase Toleransi Waste (%):</label>
+                                    <input type="number" id="pklWaste" value="5" oninput="calcPklRab()" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold outline-none focus:border-purple-500">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-slate-400 font-semibold">Estimasi Biaya Jasa/Tenaga (Rp):</label>
+                                    <input type="number" id="pklJasa" value="350000" oninput="calcPklRab()" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold outline-none focus:border-purple-500">
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                                <div class="flex justify-between items-center text-slate-400">
+                                    <span>Total Biaya Bahan Netto:</span>
+                                    <span id="pklSubtotalBahan" class="font-bold text-white">Rp 1.800.000</span>
+                                </div>
+                                <div class="flex justify-between items-center text-slate-400">
+                                    <span>Biaya Waste Tambahan:</span>
+                                    <span id="pklSubtotalWaste" class="font-bold text-amber-400">Rp 90.000</span>
+                                </div>
+                                <div class="border-t border-slate-800 pt-2 flex justify-between items-center text-sm">
+                                    <span class="font-bold text-slate-200">Total Proyeksi RAB PKL:</span>
+                                    <span id="pklTotalRab" class="font-black text-purple-400">Rp 2.240.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-[10px] font-bold">Koneksi DUDI Tracer</span>
+                            <h4 class="text-base font-black text-white mt-1">DUDI Mitra Tempat Alumni Kerja / PKL</h4>
+                            <p class="text-[11px] text-slate-400">Daftar perusahaan rekomendasi alumni SMKN 3 Pinrang</p>
+                        </div>
+
+                        <div class="space-y-2.5 text-xs">
+                            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
+                                <div>
+                                    <div class="font-bold text-white">PT Telkom Akses (TKJ)</div>
+                                    <div class="text-[10px] text-slate-400">Pembimbing Alumni: Ahmad Nurhadi</div>
+                                </div>
+                                <span class="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 text-[10px] font-bold">Siap PKL</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
+                                <div>
+                                    <div class="font-bold text-white">Astra Honda Motor (TKRO)</div>
+                                    <div class="text-[10px] text-slate-400">Pembimbing Alumni: M. Fikri</div>
+                                </div>
+                                <span class="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 text-[10px] font-bold">Siap PKL</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
+                                <div>
+                                    <div class="font-bold text-white">PLN ULP Pinrang (TITL)</div>
+                                    <div class="text-[10px] text-slate-400">Pembimbing Alumni: Rahmat H.</div>
+                                </div>
+                                <span class="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 text-[10px] font-bold">Siap PKL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBTAB 3: SIMULATOR TRIGONOMETRI ATAP -->
+            <div id="subtab-trigo" class="hidden space-y-6">
+                <div class="glass-card p-5 rounded-2xl border border-cyan-500/40 bg-cyan-950/20 space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <h4 class="font-bold text-cyan-400 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info"></i> 📌 Panduan Cara Penggunaan Simulator Trigonometri
+                        </h4>
+                        <button onclick="downloadLkpd('trigo')" class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs transition flex items-center gap-2 shadow-lg shadow-cyan-500/20">
+                            <i class="fa-solid fa-file-pdf"></i> Unduh LKPD Praktikum Trigonometri
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-300">
+                        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyan-400 block mb-1">1. Geser Slider Variabel</span>
+                            Geser nilai <strong>Panjang Alas (x)</strong> dan <strong>Tinggi (y)</strong> pada panel kontrol.
+                        </div>
+                        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyan-400 block mb-1">2. Amati Gambar Segitiga</span>
+                            Layar canvas otomatis merender bentuk segitiga siku-siku & sudut kemiringan (θ) secara visual.
+                        </div>
+                        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyan-400 block mb-1">3. Cek Status Presisi</span>
+                            Sistem menghitung panjang miring (r) dan menilai apakah sudut atap ideal (30° - 40°).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+                    <div class="flex flex-wrap justify-between items-center gap-4">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 text-[10px] font-bold">Simulasi Vokasi TKRO & TITL</span>
+                            <h3 class="text-xl font-black text-white mt-1">Kalkulator & Render Presisi Kemiringan Rangka Atap</h3>
+                        </div>
+                        <div class="text-xs text-slate-400 bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+                            Rumus: <span class="text-cyan-400 font-mono font-bold">r = √(x² + y²)</span> | <span class="text-cyan-400 font-mono font-bold">tan θ = y / x</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-5 space-y-6 bg-slate-950/50 p-6 rounded-2xl border border-slate-800/80">
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs font-bold">
+                                    <label class="text-slate-300">Panjang Alas Rangka (x):</label>
+                                    <span id="valTrigoX" class="text-cyan-400">6.0 meter</span>
+                                </div>
+                                <input type="range" id="trigoX" min="2" max="15" step="0.5" value="6" oninput="calcTrigo()" class="w-full accent-cyan-400 cursor-pointer">
+                            </div>
+
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs font-bold">
+                                    <label class="text-slate-300">Tinggi Puncak Rangka (y):</label>
+                                    <span id="valTrigoY" class="text-cyan-400">3.0 meter</span>
+                                </div>
+                                <input type="range" id="trigoY" min="1" max="10" step="0.5" value="3" oninput="calcTrigo()" class="w-full accent-cyan-400 cursor-pointer">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 pt-2">
+                                <div class="bg-slate-900 p-3 rounded-xl text-center border border-slate-800">
+                                    <div class="text-[10px] text-slate-400">Panjang Miring (r):</div>
+                                    <div id="trigoR" class="text-lg font-black text-white">6.71 m</div>
+                                </div>
+                                <div class="bg-slate-900 p-3 rounded-xl text-center border border-slate-800">
+                                    <div class="text-[10px] text-slate-400">Sudut Kemiringan (θ):</div>
+                                    <div id="trigoAngle" class="text-lg font-black text-cyan-400">26.57°</div>
+                                </div>
+                            </div>
+
+                            <div id="trigoStatus" class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs text-center font-bold">
+                                ⚠️ Sudut agak landai (&lt; 30°), risiko genangan air hujan.
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-7 bg-slate-950 p-4 rounded-2xl border border-slate-800 flex flex-col items-center justify-center">
+                            <canvas id="trigoCanvas" width="480" height="280" class="max-w-full h-auto bg-slate-950 rounded-xl"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBTAB 4: SIMULATOR BEP WIRAUSAHA -->
+            <div id="subtab-bep" class="hidden space-y-6">
+                <div class="glass-card p-5 rounded-2xl border border-emerald-500/40 bg-emerald-950/20 space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <h4 class="font-bold text-emerald-400 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info"></i> 📌 Panduan Cara Penggunaan Simulator BEP Usaha
+                        </h4>
+                        <button onclick="downloadLkpd('bep')" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/20">
+                            <i class="fa-solid fa-file-pdf"></i> Unduh LKPD Praktikum BEP Usaha
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-300">
+                        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                            <span class="font-bold text-emerald-400 block mb-1">1. Masukkan Angka Keuangan</span>
+                            Isi Biaya Tetap (Fixed Cost), Harga Jual per Unit, dan Biaya Variabel per Unit.
+                        </div>
+                        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                            <span class="font-bold text-emerald-400 block mb-1">2. Hitung Impas Otomatis</span>
+                            Sistem menghitung berapa unit produk & total omset rupiah agar impas (BEP).
+                        </div>
+                        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                            <span class="font-bold text-emerald-400 block mb-1">3. Analisis Grafik Keuangan</span>
+                            Amati persilangan garis Pendapatan (Hijau) dan Biaya (Merah) pada grafik.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+                    <div class="flex flex-wrap justify-between items-center gap-4">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-[10px] font-bold">Simulasi Vokasi Akuntansi & Wirausaha</span>
+                            <h3 class="text-xl font-black text-white mt-1">Kalkulator Break-Even Point (BEP) Keuangan Industri</h3>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-5 space-y-4 bg-slate-950/50 p-6 rounded-2xl border border-slate-800">
+                            <div class="space-y-1">
+                                <label class="text-xs text-slate-400">Biaya Tetap (Fixed Cost) - Rp:</label>
+                                <input type="number" id="bepFC" value="1500000" oninput="calcBEP()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-sm font-bold text-white outline-none focus:border-emerald-500">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs text-slate-400">Harga Jual per Unit - Rp:</label>
+                                <input type="number" id="bepPrice" value="25000" oninput="calcBEP()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-sm font-bold text-white outline-none focus:border-emerald-500">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs text-slate-400">Biaya Variabel per Unit - Rp:</label>
+                                <input type="number" id="bepVC" value="15000" oninput="calcBEP()" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-sm font-bold text-white outline-none focus:border-emerald-500">
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-center">
+                                <div class="text-xs text-slate-400">Titik Impas (BEP Unit):</div>
+                                <div id="bepResultUnit" class="text-2xl font-black text-emerald-400">150 Unit</div>
+                                <div id="bepResultRupiah" class="text-xs font-bold text-slate-300">Total Omset: Rp 3.750.000</div>
+                                <div id="bepResultMargin" class="text-[11px] text-slate-400">Margin Kontribusi: Rp 10.000 / unit</div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-7 bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                            <canvas id="bepChart" class="w-full h-64"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- TAB 3: DATA ALUMNI LIVE -->
+        <!-- ========================================= -->
+        <section id="tab-cards" class="tab-content hidden space-y-6">
+            <div class="glass-card p-4 sm:p-6 rounded-2xl border border-slate-800 space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <label class="text-xs font-bold text-cyan-400 flex items-center gap-2">
+                        <i class="fa-solid fa-link"></i> Integrasi Google Sheets CSV Publik (Database Live Tracer):
+                    </label>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="fetchLiveCSV()" class="px-3.5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-sync"></i> Sync Data Live
+                        </button>
+                        <div id="pengelolaCardsActions" class="hidden flex flex-wrap gap-2">
+                            <button onclick="exportToCSV()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-file-excel"></i> Export CSV
+                            </button>
+                            <button onclick="openBroadcastPanelModal()" class="px-3.5 py-2 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white font-bold text-xs border border-purple-500/30 transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-bullhorn"></i> Broadcast WA Orang Tua
+                            </button>
+                            <button id="printAlumniBtn" onclick="openPrintAlumniModal()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-print"></i> Cetak Data Alumni
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" id="csvUrlInput" placeholder="Tempelkan Tautan Publik CSV Google Sheets di sini..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white outline-none focus:border-cyan-500">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-card p-4 rounded-2xl text-center space-y-1">
+                    <div id="statTotal" class="text-2xl font-black text-cyan-400">0</div>
+                    <div class="text-[10px] text-slate-400 font-bold uppercase">Total Alumni</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center space-y-1">
+                    <div id="statKerja" class="text-2xl font-black text-emerald-400">0</div>
+                    <div class="text-[10px] text-slate-400 font-bold uppercase">Bekerja di DUDI</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center space-y-1">
+                    <div id="statWirausaha" class="text-2xl font-black text-amber-400">0</div>
+                    <div class="text-[10px] text-slate-400 font-bold uppercase">Wirausaha</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center space-y-1">
+                    <div id="statKuliah" class="text-2xl font-black text-purple-400">0</div>
+                    <div class="text-[10px] text-slate-400 font-bold uppercase">Kuliah</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <div class="relative w-full sm:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
+                    <input type="text" id="searchInput" oninput="renderCards()" placeholder="Cari nama, jurusan, atau tempat kerja..." class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-4 py-2.5 text-xs text-white outline-none focus:border-cyan-500">
+                </div>
+                <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+                    <button class="filter-btn active px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30" onclick="setFilter('SEMUA', this)">Semua</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800" onclick="setFilter('BEKERJA', this)">Bekerja</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800" onclick="setFilter('WIRAUSAHA', this)">Wirausaha</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800" onclick="setFilter('KULIAH', this)">Kuliah</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800" onclick="setFilter('MENCARI', this)">Mencari Kerja</button>
+                </div>
+            </div>
+
+            <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- TAB 4: VISUAL ANALYTICS -->
+        <!-- ========================================= -->
+        <section id="tab-analytics" class="tab-content hidden space-y-6">
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+                <div>
+                    <h3 class="text-xl font-black text-white">Dasbor Visual Data Alumni (Pembelajaran Statistika Class Project)</h3>
+                    <p class="text-xs text-slate-400">Data *real-time* penelusuran lulusan digunakan sebagai bahan ajar bab Statistika & Peluang di kelas X & XI SMKN 3 Pinrang.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+                        <h4 class="text-sm font-bold text-slate-300">Diagram Penyerapan Status Alumni (BMW)</h4>
+                        <div class="h-64 relative flex items-center justify-center">
+                            <canvas id="chartBMW"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+                        <h4 class="text-sm font-bold text-slate-300">Diagram Keselarasan Jurusan dengan DUDI</h4>
+                        <div class="h-64 relative flex items-center justify-center">
+                            <canvas id="chartKeselarasan"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- TAB 5: FORM TRACER STUDY -->
+        <!-- ========================================= -->
+        <section id="tab-tracer" class="tab-content hidden space-y-6">
+            <div class="max-w-2xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold text-xs">
+                        🚀 Zero-Barrier Tracer Study • Cukup 45 Detik
+                    </span>
+                    <h3 class="text-2xl font-black text-white">Pemutakhiran Data Alumni SMKN 3 Pinrang</h3>
+                    <p class="text-xs text-slate-400">Bantu sekolahmu memperbarui database alumni tanpa perlu mengingat login/password!</p>
+                </div>
+
+                <form id="tracerForm" onsubmit="handleTracerSubmit(event)" class="space-y-4 text-xs">
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-300">Nama Lengkap Alumni:</label>
+                        <input type="text" id="tNama" required placeholder="Contoh: Muhammad Fikri" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white outline-none focus:border-emerald-500">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="font-bold text-slate-300">Tahun Lulus:</label>
+                            <select id="tLulusan" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white outline-none focus:border-emerald-500">
+                                <option value="2025">2025</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-bold text-slate-300">Program Keahlian Jurusan:</label>
+                            <select id="tJurusan" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white outline-none focus:border-emerald-500">
+                                <option value="Teknik Kendaraan Ringan">Teknik Kendaraan Ringan (TKRO)</option>
+                                <option value="Teknologi Komputer & Jaringan">Teknologi Komputer Jaringan (TKJ)</option>
+                                <option value="Desain Komunikasi Visual">Desain Komunikasi Visual (DKV)</option>
+                                <option value="Teknik Instalasi Tenaga Listrik">Instalasi Tenaga Listrik (TITL)</option>
+                                <option value="Akuntansi & Keuangan">Akuntansi & Keuangan (AKL)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-300">Status Karir Saat Ini (BMW):</label>
+                        <select id="tStatus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white outline-none focus:border-emerald-500">
+                            <option value="BEKERJA">Bekerja di Perusahaan / Instansi DUDI</option>
+                            <option value="WIRAUSAHA">Wirausaha Mandiri / Toko / UMKM</option>
+                            <option value="KULIAH">Kuliah / Lanjut Studi Tinggi</option>
+                            <option value="MENCARI KERJA">Masih Mencari Kerja / Persiapan</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="font-bold text-slate-300">Nama Perusahaan / Instansi / Kampus:</label>
+                            <input type="text" id="tTempat" required placeholder="Contoh: PT Telkom Akses / Unhas" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white outline-none focus:border-emerald-500">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-bold text-slate-300">Jabatan / Posisi / Prodi:</label>
+                            <input type="text" id="tPosisi" required placeholder="Contoh: Teknisi / Mahasiswa S1" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white outline-none focus:border-emerald-500">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-300">Nomor WhatsApp Aktif Alumni / Orang Tua:</label>
+                        <input type="text" id="tWa" required placeholder="Contoh: 6285211112222" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white outline-none focus:border-emerald-500">
+                    </div>
+
+                    <div class="space-y-2 pt-2">
+                        <label class="font-bold text-slate-300">Rating Kebermanfaatan Pembelajaran Matematika Vokasi di Dunia Kerja:</label>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-amber-400 text-lg gap-1 cursor-pointer" id="starRatingBox">
+                                <i class="fa-solid fa-star star-btn" onclick="setStarRating(1)"></i>
+                                <i class="fa-solid fa-star star-btn" onclick="setStarRating(2)"></i>
+                                <i class="fa-solid fa-star star-btn" onclick="setStarRating(3)"></i>
+                                <i class="fa-solid fa-star star-btn" onclick="setStarRating(4)"></i>
+                                <i class="fa-solid fa-star star-btn" onclick="setStarRating(5)"></i>
+                            </div>
+                            <span id="starRatingText" class="text-xs text-slate-400 font-bold">(5 / 5 - Sangat Bermanfaat)</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 pt-2 border-t border-slate-800/80">
+                        <label class="flex items-center gap-2 cursor-pointer text-slate-300">
+                            <input type="checkbox" id="tPrivasi" checked class="accent-emerald-500 rounded">
+                            Tampilkan profil di kartu alumni publik (Internal BKK)
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-emerald-600/20 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Simpan Data & Dapatkan Template CV ATS Gratis
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div>
+                © 2026 <strong>JejakAngka.id</strong> • Karya Digital oleh <span id="footerCreatorDisplay" class="text-slate-300 font-bold cursor-pointer hover:text-cyan-400" onclick="promptEditCreatorName()">Nama Anda, S.Pd.</span> • SMKN 3 Pinrang.
+            </div>
+            <div class="flex gap-4">
+                <a href="#" onclick="switchTab('landing')" class="hover:text-slate-300">Beranda</a>
+                <a href="#" onclick="switchTab('simulator')" class="hover:text-slate-300">Lab Simulator</a>
+                <a href="#" onclick="switchTab('tracer')" class="hover:text-slate-300">Form Tracer</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: LOGIN HAK AKSES GURU/ADMIN -->
+    <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-sm w-full space-y-5 shadow-2xl relative">
+            <button onclick="closeLoginModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-xl font-bold mx-auto">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3 class="text-lg font-black text-white">Login Hak Akses</h3>
+                <p class="text-xs text-slate-400">Pilih peran dan masukkan PIN Keamanan</p>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Pilih Peran Akses:</label>
+                    <select id="loginRoleSelect" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500 font-semibold">
+                        <option value="guru">👨‍🏫 Guru Mata Pelajaran (PIN: 1234)</option>
+                        <option value="admin">🔑 Admin BKK / Sekolah (PIN: 9999)</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">PIN Keamanan:</label>
+                    <input type="password" id="loginPinInput" onkeydown="if(event.key==='Enter') submitLogin()" placeholder="Masukkan PIN..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500">
+                </div>
+                <div id="loginErrorMsg" class="hidden text-red-400 font-bold text-[11px] text-center"></div>
+
+                <button onclick="submitLogin()" class="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-xl text-xs transition">
+                    Verifikasi Login
+                </button>
+
+                <div class="pt-2 border-t border-slate-800/80 flex gap-2">
+                    <button onclick="quickLogin('guru')" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 font-bold rounded-xl text-[11px] transition">
+                        ⚡ Demo Guru (1234)
+                    </button>
+                    <button onclick="quickLogin('admin')" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-purple-400 font-bold rounded-xl text-[11px] transition">
+                        🔑 Demo Admin (9999)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: TAMBAH/EDIT MATERI -->
+    <div id="addMaterialModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl relative">
+            <button onclick="closeMaterialModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-xl font-bold mx-auto">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <h3 class="text-lg font-black text-white" id="matModalTitle">Kelola Modul Pembelajaran</h3>
+                <p class="text-xs text-slate-400">Tambah atau Perbarui Materi, Video & Kuis Asesmen</p>
+            </div>
+
+            <form onsubmit="saveMaterial(event)" class="space-y-3 text-xs">
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Judul Materi / Modul:</label>
+                    <input type="text" id="matTitle" required placeholder="Contoh: Trigonometri Presisi Rangka Atap" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-300">Jurusan Keahlian:</label>
+                        <select id="matJurusan" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500 font-semibold">
+                            <option value="TKRO">TKRO (Otomotif)</option>
+                            <option value="TKJ">TKJ (Jaringan)</option>
+                            <option value="DKV">DKV (Desain)</option>
+                            <option value="TITL">TITL (Listrik)</option>
+                            <option value="AKL">Akuntansi</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-300">Tipe Media:</label>
+                        <select id="matType" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500 font-semibold">
+                            <option value="video">🎥 Video YouTube Embed</option>
+                            <option value="pdf">📄 File PDF Materi (≤15MB)</option>
+                            <option value="ppt">📊 Presentasi Slide PPT (.ppt / .pptx)</option>
+                            <option value="quiz">📝 Link Kuis Asesmen</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="space-y-2 p-3 bg-slate-950 rounded-2xl border border-slate-800">
+                    <div class="flex items-center justify-between text-slate-300 font-bold">
+                        <span>Sumber Media Pembelajaran:</span>
+                    </div>
+
+                    <div id="matFileUploadBox" class="space-y-1">
+                        <label class="block p-3 border-2 border-dashed border-cyan-900/60 hover:border-cyan-500 rounded-xl text-center cursor-pointer bg-slate-900/60 transition group">
+                            <i class="fa-solid fa-file-arrow-up text-cyan-400 text-xl mb-1 block group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-bold text-white block">Unggah Berkas PDF / PPT / DOC</span>
+                            <span class="text-[10px] text-slate-400 block">Mendukung .pdf, .ppt, .pptx, .docx (Maks. 15MB)</span>
+                            <input type="file" id="matFileInput" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="handleFileUpload(event, 'mat')" class="hidden">
+                        </label>
+                        <div id="matFileStatus" class="hidden p-2 rounded-lg bg-cyan-950/60 border border-cyan-500/40 text-[11px] text-cyan-300 font-mono flex items-center justify-between">
+                            <span id="matFileName" class="truncate font-bold"></span>
+                            <button type="button" onclick="clearUploadedFile('mat')" class="text-red-400 hover:text-red-300 text-xs ml-2"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1 pt-1">
+                        <label class="text-[11px] text-slate-400 font-semibold">Atau Link URL (YouTube / Drive / Quizizz):</label>
+                        <input type="text" id="matUrl" placeholder="https://..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500 font-mono text-xs">
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Deskripsi Singkat Pembelajaran:</label>
+                    <textarea id="matDesc" rows="3" placeholder="Jelaskan ringkas topik dan kompetensi matematika..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-xl text-xs transition shadow-lg shadow-cyan-500/20">
+                    Simpan Modul Pembelajaran
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: KARTU ALUMNI DIGITAL & CV ATS GENERATOR -->
+    <div id="atsCvModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-2xl w-full space-y-5 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeAtsCvModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <div class="text-center space-y-1">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">✨ Kartu Alumni & ATS CV Berhasil Diterbitkan</span>
+                <h3 class="text-xl font-black text-white">Imbalan Pendataan Alumni SMKN 3 Pinrang</h3>
+            </div>
+
+            <div id="digitalCardPreview" class="bg-gradient-to-r from-slate-950 via-cyan-950 to-slate-950 border-2 border-cyan-500/40 p-5 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center gap-4">
+                <div class="w-20 h-20 rounded-2xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-300 text-3xl font-black flex-shrink-0">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <div class="space-y-1 text-center sm:text-left flex-grow">
+                    <div class="flex items-center justify-center sm:justify-start gap-2">
+                        <span class="px-2 py-0.5 rounded bg-cyan-500 text-slate-950 font-black text-[9px] uppercase">Verified Alumni</span>
+                        <span class="text-[10px] text-slate-400">SMKN 3 PINRANG</span>
+                    </div>
+                    <h4 id="cardNama" class="text-base font-black text-white">Nama Alumni</h4>
+                    <p id="cardJurusan" class="text-xs text-cyan-300">Jurusan • Tahun Lulus</p>
+                    <p id="cardStatus" class="text-[11px] text-slate-300">Status BMW</p>
+                    <p id="cardInstansi" class="text-[10px] text-slate-400">Instansi / Perusahaan</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3">
+                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Draft Curriculum Vitae (ATS-Friendly):</h4>
+                <div id="atsCvPreview" class="bg-slate-900 p-4 rounded-xl text-xs text-slate-300 space-y-2 border border-slate-800 font-sans">
+                </div>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="printCvPdf()" class="flex-1 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid fa-print"></i> Cetak / Download PDF CV & Kartu
+                </button>
+                <button onclick="closeAtsCvModal()" class="px-5 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-xs transition">
+                    Selesai
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: CETAK LAPORAN ALUMNI -->
+    <div id="printAlumniModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-3xl w-full space-y-5 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closePrintAlumniModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white no-print"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3 no-print">
+                <h3 class="text-lg font-black text-white">Laporan Rekapitulasi Data Alumni SMKN 3 Pinrang</h3>
+                <button onclick="doPrintAlumni()" class="px-4 py-2 bg-cyan-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-cyan-400 transition flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i> Cetak / Download PDF
+                </button>
+            </div>
+
+            <div id="printableArea" class="bg-slate-950 p-6 rounded-xl border border-slate-800 overflow-x-auto">
+                <div class="mb-4 text-center">
+                    <h2 class="text-base font-extrabold text-white sm:text-black">LAPORAN REKAPITULASI TRACER STUDY ALUMNI</h2>
+                    <p class="text-xs text-slate-400 sm:text-slate-700">SMKN 3 PINRANG • KARYA GURU: <span class="creatorNamePrintSpan">Nama Anda, S.Pd.</span></p>
+                    <hr class="my-2 border-slate-700">
+                </div>
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 font-bold">
+                            <th class="p-2 border border-slate-800">No</th>
+                            <th class="p-2 border border-slate-800">Nama Alumni</th>
+                            <th class="p-2 border border-slate-800">Tahun</th>
+                            <th class="p-2 border border-slate-800">Jurusan</th>
+                            <th class="p-2 border border-slate-800">Status</th>
+                            <th class="p-2 border border-slate-800">Instansi / DUDI</th>
+                            <th class="p-2 border border-slate-800">Posisi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="printTableBody" class="divide-y divide-slate-800/60 text-slate-300">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: UBAH PIN KEAMANAN -->
+    <div id="changePinModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-sm w-full space-y-4 shadow-2xl relative">
+            <button onclick="closeChangePinModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <h3 class="text-base font-black text-white text-center">Pengaturan PIN & Identity Pencipta</h3>
+
+            <div class="space-y-3 text-xs">
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Nama Guru / Pencipta Karya:</label>
+                    <input type="text" id="editCreatorNameInput" placeholder="Contoh: Drs. H. Syamsuddin, M.Pd." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-purple-500">
+                </div>
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">PIN Guru Baru:</label>
+                    <input type="password" id="newGuruPin" placeholder="Default: 1234" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none">
+                </div>
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">PIN Admin Baru:</label>
+                    <input type="password" id="newAdminPin" placeholder="Default: 9999" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none">
+                </div>
+                <button onclick="saveNewPins()" class="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-xs transition">
+                    Simpan Perubahan Identitas & PIN
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6: BROADCAST WA ORANG TUA -->
+    <div id="broadcastModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-4 shadow-2xl relative">
+            <button onclick="closeBroadcastModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/30 flex items-center justify-center text-xl font-bold mx-auto">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <h3 class="text-lg font-black text-white">Broadcast WA Orang Tua</h3>
+                <p class="text-xs text-slate-400">Pesan Santun Konfirmasi Status Alumni via Orang Tua Siswa</p>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Nama Alumni:</label>
+                    <input type="text" id="bcNama" readonly class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-400 font-bold outline-none">
+                </div>
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Nomor WhatsApp Orang Tua / Alumni:</label>
+                    <input type="text" id="bcWa" placeholder="Contoh: 6285211112222" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-mono outline-none focus:border-purple-500">
+                </div>
+
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Pratinjau Pesan Broadcast WA:</label>
+                    <textarea id="bcMsgPreview" rows="6" readonly class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-slate-300 text-[11px] font-sans leading-relaxed outline-none"></textarea>
+                </div>
+
+                <div class="flex gap-2 pt-2">
+                    <button onclick="sendParentWaDirect()" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Kirim WA Langsung
+                    </button>
+                    <button onclick="copyBcText()" class="px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-xs transition" title="Salin Teks">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 7: PANEL DAFTAR BROADCAST WA ALUMNI -->
+    <div id="broadcastPanelModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-2xl w-full space-y-4 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+            <button onclick="closeBroadcastPanelModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <div>
+                <h3 class="text-lg font-black text-white flex items-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-purple-400"></i> Panel Broadcast WA Orang Tua
+                </h3>
+                <p class="text-xs text-slate-400 mt-1">Pilih alumni untuk memicu konfirmasi penelusuran lulusan melalui WhatsApp orang tua.</p>
+            </div>
+
+            <div id="bcAlumniList" class="space-y-2.5 max-h-96 overflow-y-auto pt-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 8: UPLOAD & EDIT DOKUMEN / SERTIFIKAT PKL -->
+    <div id="pklDocModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-5 shadow-2xl relative">
+            <button onclick="closePklDocModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/30 flex items-center justify-center text-xl font-bold mx-auto">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                </div>
+                <h3 class="text-lg font-black text-white" id="pklDocModalTitle">Upload Dokumen / Sertifikat PKL</h3>
+                <p class="text-xs text-slate-400">Tambah atau Perbarui Sertifikat Alumni & Berkas PKL</p>
+            </div>
+
+            <form onsubmit="savePklDoc(event)" class="space-y-3 text-xs">
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Judul Dokumen / Sertifikat:</label>
+                    <input type="text" id="pklDocTitle" required placeholder="Contoh: Sertifikat PKL - M. Fikri" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-purple-500">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-300">Tipe Berkas:</label>
+                        <select id="pklDocType" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-purple-500 font-semibold">
+                            <option value="sertifikat">📜 Sertifikat PKL</option>
+                            <option value="materi">📄 Materi Pembekalan</option>
+                            <option value="laporan">📊 Format Laporan</option>
+                            <option value="ppt">📊 Presentasi Slide PPT</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-300">Jurusan Keahlian:</label>
+                        <select id="pklDocJurusan" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-purple-500 font-semibold">
+                            <option value="TKRO">TKRO (Otomotif)</option>
+                            <option value="TKJ">TKJ (Jaringan)</option>
+                            <option value="DKV">DKV (Desain)</option>
+                            <option value="TITL">TITL (Listrik)</option>
+                            <option value="AKL">Akuntansi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="space-y-2 p-3 bg-slate-950 rounded-2xl border border-slate-800">
+                    <div class="flex items-center justify-between text-slate-300 font-bold">
+                        <span>Unggah / Tautan Berkas PKL:</span>
+                    </div>
+
+                    <div id="pklFileUploadBox" class="space-y-1">
+                        <label class="block p-3 border-2 border-dashed border-purple-900/60 hover:border-purple-500 rounded-xl text-center cursor-pointer bg-slate-900/60 transition group">
+                            <i class="fa-solid fa-file-arrow-up text-purple-400 text-xl mb-1 block group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-bold text-white block">Unggah Berkas PDF / PPT / Sertifikat</span>
+                            <span class="text-[10px] text-slate-400 block">Mendukung .pdf, .ppt, .pptx, .jpg, .png (Maks 15MB)</span>
+                            <input type="file" id="pklFileInput" accept=".pdf,.ppt,.pptx,.doc,.docx,.jpg,.png" onchange="handleFileUpload(event, 'pkl')" class="hidden">
+                        </label>
+                        <div id="pklFileStatus" class="hidden p-2 rounded-lg bg-purple-950/60 border border-purple-500/40 text-[11px] text-purple-300 font-mono flex items-center justify-between">
+                            <span id="pklFileName" class="truncate font-bold"></span>
+                            <button type="button" onclick="clearUploadedFile('pkl')" class="text-red-400 hover:text-red-300 text-xs ml-2"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1 pt-1">
+                        <label class="text-[11px] text-slate-400 font-semibold">Atau Link URL Berkas / Drive / Canvas:</label>
+                        <input type="text" id="pklDocUrl" placeholder="https://..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-purple-500 font-mono text-xs">
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-300">Deskripsi Berkas / Nama Alumni:</label>
+                    <textarea id="pklDocDesc" rows="2" placeholder="Contoh: Diterbitkan oleh PT Telkom Akses Pinrang (Angkatan 2024)..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-purple-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white font-black rounded-xl text-xs transition shadow-lg shadow-purple-600/20">
+                    Simpan Berkas PKL
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 9: KELOLA OTORISASI AKSES GURU -->
+    <div id="manageTeachersModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-xl w-full space-y-5 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeManageTeachersModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-xl font-bold mx-auto">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+                <h3 class="text-lg font-black text-white">Kelola Otorisasi Akses Guru</h3>
+                <p class="text-xs text-slate-400">Tambah, Edit, atau Nonaktifkan Hak Akses Guru Mata Pelajaran</p>
+            </div>
+
+            <form onsubmit="saveTeacherAccess(event)" class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3 text-xs">
+                <input type="hidden" id="teacherEditId" value="">
+                <div class="font-bold text-cyan-400" id="teacherFormTitle">Tambah Guru Terotorisasi Baru:</div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="space-y-1">
+                        <label class="text-slate-300 font-semibold">Nama Lengkap Guru:</label>
+                        <input type="text" id="teacherNama" required placeholder="Contoh: Drs. H. Syamsuddin, M.Pd." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-slate-300 font-semibold">NIP / ID Guru:</label>
+                        <input type="text" id="teacherNip" required placeholder="19681231..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="space-y-1">
+                        <label class="text-slate-300 font-semibold">Mata Pelajaran / Tugas:</label>
+                        <input type="text" id="teacherMapel" required placeholder="Matematika Vokasi" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-slate-300 font-semibold">PIN Akses (4 Digit):</label>
+                        <input type="text" id="teacherPin" required placeholder="1234" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-white font-mono outline-none focus:border-cyan-500">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-slate-300 font-semibold">Status Akses:</label>
+                        <select id="teacherStatus" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-500 font-bold">
+                            <option value="Aktif">Aktif</option>
+                            <option value="Nonaktif">Nonaktif</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button type="submit" class="flex-1 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-xl text-xs transition">
+                        Simpan Otorisasi Guru
+                    </button>
+                    <button type="button" onclick="resetTeacherForm()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-xs transition">
+                        Reset
+                    </button>
+                </div>
+            </form>
+
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                    <span class="font-bold text-slate-300">Daftar Guru Terotorisasi:</span>
+                    <span id="teacherCountBadge" class="text-[10px] text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-500/30">2 Guru</span>
+                </div>
+                <div id="teacherListContainer" class="space-y-2 max-h-48 overflow-y-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 10: VIDEO PLAYER -->
+    <div id="videoPlayerModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-4 sm:p-6 max-w-3xl w-full space-y-4 shadow-2xl relative">
+            <button onclick="closeVideoPlayerModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 id="videoModalTitle" class="text-base font-black text-white pr-8 truncate">Pemutar Video Pembelajaran</h3>
+            <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden border border-slate-800">
+                <iframe id="videoModalIframe" class="w-full h-full" src="" title="Pemutar Video Pembelajaran" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // GLOBAL CREATOR IDENTITY
+        let creatorName = localStorage.getItem('ja_creatorName') || "Nama Anda, S.Pd.";
+
+        function updateCreatorDisplayUI() {
+            if (document.getElementById('heroCreatorBadgeDisplay')) document.getElementById('heroCreatorBadgeDisplay').innerText = creatorName;
+            if (document.getElementById('heroCreatorText')) document.getElementById('heroCreatorText').innerText = creatorName;
+            if (document.getElementById('footerCreatorDisplay')) document.getElementById('footerCreatorDisplay').innerText = creatorName;
+            if (document.getElementById('editCreatorNameInput')) document.getElementById('editCreatorNameInput').value = creatorName;
+            document.querySelectorAll('.creatorNamePrintSpan').forEach(el => el.innerText = creatorName);
+        }
+
+        function promptEditCreatorName() {
+            const newName = prompt("Masukkan nama lengkap dan gelar Anda sebagai Pencipta Aplikasi:", creatorName);
+            if (newName && newName.trim() !== "") {
+                creatorName = newName.trim();
+                localStorage.setItem('ja_creatorName', creatorName);
+                updateCreatorDisplayUI();
+                showToast(`Identitas pencipta diperbarui: "${creatorName}"`, 'success');
+            }
+        }
+
+        // GLOBAL STATE & DATASETS
+        const defaultAlumniData = [
+            { nama: "Ahmad Nurhadi", lulusan: "2024", jurusan: "Teknologi Komputer & Jaringan", status: "BEKERJA", tempat: "PT Telkom Akses Pinrang", posisi: "Teknisi Network Infrastructure", wa: "6285211112222", keselarasan: "Sangat Sesuai" },
+            { nama: "Siti Rahmawati", lulusan: "2023", jurusan: "Akuntansi & Keuangan", status: "WIRAUSAHA", tempat: "Rahma Accounting & Digital Print", posisi: "Owner / Founder", wa: "6285233334444", keselarasan: "Sesuai" },
+            { nama: "Muhammad Fikri", lulusan: "2024", jurusan: "Teknik Kendaraan Ringan", status: "BEKERJA", tempat: "Astra Honda Motor Pinrang", posisi: "Teknisi Mep Presisi", wa: "6285255556666", keselarasan: "Sangat Sesuai" },
+            { nama: "Nurul Hidayah", lulusan: "2024", jurusan: "Desain Komunikasi Visual", status: "KULIAH", tempat: "Universitas Negeri Makassar", posisi: "Mahasiswa S1 DKV", wa: "6285277778888", keselarasan: "Sesuai" },
+            { nama: "Rahmat Hidayat", lulusan: "2023", jurusan: "Teknik Instalasi Tenaga Listrik", status: "BEKERJA", tempat: "PLN ULP Pinrang", posisi: "Teknisi Jaringan Listrik", wa: "6285299990000", keselarasan: "Sangat Sesuai" },
+            { nama: "Andi Saputra", lulusan: "2024", jurusan: "Teknik Kendaraan Ringan", status: "MENCARI KERJA", tempat: "Persiapan Industri", posisi: "Pencari Kerja", wa: "6285212345678", keselarasan: "Belum Sesuai" }
+        ];
+
+        const defaultMaterialsData = [
+            { id: 1, title: "Trigonometri Presisi Rangka Atap", jurusan: "TKRO", type: "video", url: "https://www.youtube.com/embed/dQw4w9WgXcQ", desc: "Simulasi sudut kemiringan rangka atap kendaraan dan bangunan presisi." },
+            { id: 2, title: "Kalkulasi BEP Usaha Aluminium DUDI", jurusan: "AKL", type: "pdf", url: "#", desc: "Modul perhitungan titik impas produksi bengkel las dan kriya aluminium." },
+            { id: 3, title: "Subnetting IP & Logika Biner Vokasi", jurusan: "TKJ", type: "ppt", url: "#", desc: "Presentasi kalkulasi alokasi IP Address dan efisiensi bandwidth jaringan." },
+            { id: 4, title: "Rasio Golden Aspect Ratio Design", jurusan: "DKV", type: "quiz", url: "https://quizizz.com", desc: "Kuis interaktif geometri visual dan komposisi rasio desain 16:9." }
+        ];
+
+        const defaultPklDocsData = [
+            { id: 101, title: "Sertifikat PKL - Ahmad Nurhadi", type: "sertifikat", jurusan: "TKJ", url: "#", desc: "Sertifikat Nilai Industri dari PT Telkom Akses Pinrang (Predikat: Sangat Baik)." },
+            { id: 102, title: "Modul Pembekalan K3 & Presisi Industri", type: "materi", jurusan: "TKRO", url: "#", desc: "Panduan keselamatan kerja dan matematika ukur presisi bengkel otomotif." },
+            { id: 103, title: "Format Laporan Jurnal PKL Standard SMKN 3", type: "laporan", jurusan: "AKL", url: "#", desc: "Template laporan akhir PKL berbasis Microsoft Word / PDF siap isi." }
+        ];
+
+        const defaultAuthorizedTeachers = [
+            { id: 1, nama: "Drs. H. Syamsuddin, M.Pd.", nip: "19681231 199403 1 008", mapel: "Matematika Vokasi", pin: "1234", status: "Aktif" },
+            { id: 2, nama: "Nurdin, S.T., M.Kom.", nip: "19820514 200801 1 012", mapel: "Kaprog TKJ & PKL", pin: "5678", status: "Aktif" }
+        ];
+
+        let alumniData = [];
+        let materialsData = [];
+        let pklDocsData = [];
+        let authorizedTeachers = [];
+
+        let currentRole = 'siswa';
+        let guruPin = '1234';
+        let adminPin = '9999';
+        let uploadedFileMap = {};
+        let activeFilter = 'SEMUA';
+        let currentRating = 5;
+
+        // LOCAL STORAGE PERSISTENCE
+        function saveToLocalStorage() {
+            try {
+                localStorage.setItem('ja_alumniData', JSON.stringify(alumniData));
+                localStorage.setItem('ja_materialsData', JSON.stringify(materialsData));
+                localStorage.setItem('ja_pklDocsData', JSON.stringify(pklDocsData));
+                localStorage.setItem('ja_teachersData', JSON.stringify(authorizedTeachers));
+            } catch (e) {
+                console.error('LocalStorage save error:', e);
+            }
+        }
+
+        function loadFromLocalStorage() {
+            try {
+                const storedAlumni = localStorage.getItem('ja_alumniData');
+                alumniData = storedAlumni ? JSON.parse(storedAlumni) : [...defaultAlumniData];
+
+                const storedMaterials = localStorage.getItem('ja_materialsData');
+                materialsData = storedMaterials ? JSON.parse(storedMaterials) : [...defaultMaterialsData];
+
+                const storedPkl = localStorage.getItem('ja_pklDocsData');
+                pklDocsData = storedPkl ? JSON.parse(storedPkl) : [...defaultPklDocsData];
+
+                const storedTeachers = localStorage.getItem('ja_teachersData');
+                authorizedTeachers = storedTeachers ? JSON.parse(storedTeachers) : [...defaultAuthorizedTeachers];
+            } catch (e) {
+                console.error('LocalStorage read error:', e);
+                alumniData = [...defaultAlumniData];
+                materialsData = [...defaultMaterialsData];
+                pklDocsData = [...defaultPklDocsData];
+                authorizedTeachers = [...defaultAuthorizedTeachers];
+            }
+        }
+
+        // GEMINI AI TUTOR ENGINE
+        async function queryGeminiAi(userPrompt, retryCount = 0) {
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const alumniSummary = alumniData.map(a => `- ${a.nama} (${a.jurusan}, Lulus ${a.lulusan}): Status ${a.status} di ${a.tempat} sebagai ${a.posisi}, HP/WA: ${a.wa}`).join('\n');
+            const pklSummary = pklDocsData.map(p => `- ${p.title} (${p.jurusan}, Tipe: ${p.type}): ${p.desc}`).join('\n');
+            const materialsSummary = materialsData.map(m => `- ${m.title} (${m.jurusan}): ${m.desc}`).join('\n');
+
+            const systemPrompt = `Kamu adalah AI Tutor JejakAngka, asisten Kecerdasan Buatan (AI) serba bisa dan tutor interaktif portal JejakAngka.id UPT SMKN 3 Pinrang yang diciptakan oleh ${creatorName}.
+
+TUGAS UTAMA DAN ATURAN UTAMA:
+1. Kamu DAPAT dan HARUS menjawab SEMUA jenis pertanyaan pengguna tanpa terkecuali! Mulai dari pertanyaan seputar materi kejuruan (TKRO, TKJ, DKV, TITL, AKL), matematika umum/terapan, penelusuran data alumni SMKN 3 Pinrang, informasi PKL, sains, sejarah, pemrograman/coding, wirausaha, hingga pertanyaan umum/bebas sehari-hari.
+2. Jika pertanyaan berkaitan dengan alumni atau PKL SMKN 3 Pinrang, manfaatkan konteks data berikut:
+   [DATA ALUMNI LIVE]
+   ${alumniSummary}
+   [MITRA PKL & SERTIFIKASI]
+   - Mitra PKL Utama: PT Telkom Akses Pinrang (TKJ), Astra Honda Motor Pinrang (TKRO), PLN ULP Pinrang (TITL).
+   ${pklSummary}
+   [MODUL & SIMULATOR APP]
+   - Simulator Trigonometri: r = √(x² + y²), tan(θ) = y/x.
+   - Simulator BEP Usaha: BEP Unit = Biaya Tetap / (Harga Jual - Biaya Variabel).
+   ${materialsSummary}
+3. Jika pengguna mengajukan soal matematika atau perhitungan (misal: "9 x 4", "hitung 150000 * 12", "deret angka", "integrasi"), hitung hasilnya secara presisi dan tunjukkan langkah penyelesaiannya.
+4. Berikan jawaban yang ramah, terstruktur, mendalam, dan menggunakan format Markdown (bold, list, code block).`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            try {
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    if (retryCount < 2) {
+                        await new Promise(r => setTimeout(r, 1000 * Math.pow(2, retryCount)));
+                        return await queryGeminiAi(userPrompt, retryCount + 1);
+                    }
+                    throw new Error('API Response Error');
+                }
+
+                const data = await res.json();
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (!text) throw new Error('Empty AI response');
+                return text;
+            } catch (err) {
+                if (retryCount < 2) {
+                    await new Promise(r => setTimeout(r, 1000 * Math.pow(2, retryCount)));
+                    return await queryGeminiAi(userPrompt, retryCount + 1);
+                }
+                throw err;
+            }
+        }
+
+        function formatMarkdownText(txt) {
+            if (!txt) return '';
+            return txt
+                .replace(/```([\s\S]*?)```/g, '<pre class="bg-slate-900 border border-cyan-500/30 p-2.5 rounded-xl font-mono text-[11px] my-2 text-cyan-300 overflow-x-auto"><code>$1</code></pre>')
+                .replace(/`([^`]+)`/g, '<code class="bg-slate-900 text-cyan-300 px-1.5 py-0.5 rounded font-mono text-[11px] border border-slate-800">$1</code>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-cyan-300 font-bold">$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em class="text-slate-200">$1</em>')
+                .replace(/^### (.*$)/gim, '<h4 class="text-xs font-black text-white mt-2 mb-1">$1</h4>')
+                .replace(/^## (.*$)/gim, '<h3 class="text-xs font-black text-cyan-400 mt-2 mb-1">$1</h3>')
+                .replace(/\n\n/g, '<br><br>')
+                .replace(/\n/g, '<br>')
+                .replace(/^- (.*)/gm, '• $1');
+        }
+
+        function getSmartLocalFallback(q) {
+            const query = q.toLowerCase();
+
+            const mathClean = query.replace(/x/g, '*').replace(/÷/g, '/').replace(/bagaimana saya menyelesaikan soal /g, '').replace(/hitung /g, '').replace(/berapa /g, '').trim();
+            if (/^[\d\s\+\-\*\/\(\)\.]+$/.test(mathClean)) {
+                try {
+                    const ans = eval(mathClean);
+                    return `Hasil kalkulasi matematika **${mathClean.replace(/\*/g, ' x ')}** adalah **${ans}**.\n\n*Catatan:* Kamu juga bisa meminta saya menjelaskan rumus atau materi matematika vokasi lainnya!`;
+                } catch(e){}
+            }
+
+            const foundAlumni = alumniData.filter(a => 
+                query.includes(a.nama.toLowerCase()) || 
+                query.includes(a.jurusan.toLowerCase()) ||
+                query.includes(a.tempat.toLowerCase()) ||
+                query.includes(a.status.toLowerCase())
+            );
+
+            if (foundAlumni.length > 0 && (query.includes('alumni') || query.includes('cari') || query.includes('siapa') || query.includes('bekerja') || query.includes('kerja') || query.includes('nama'))) {
+                let res = `🔍 **Hasil Penelusuran Alumni SMKN 3 Pinrang:**\n\n`;
+                foundAlumni.slice(0, 4).forEach(a => {
+                    res += `• **${a.nama}** (${a.jurusan} - ${a.lulusan}): Status **${a.status}** di **${a.tempat}** sebagai *${a.posisi}* (WA: ${a.wa})\n`;
+                });
+                return res;
+            }
+
+            if (query.includes('pkl') || query.includes('magang') || query.includes('sertifikat') || query.includes('tempat')) {
+                return `🛠️ **Informasi PKL & DUDI SMKN 3 Pinrang:**\n\n• **Tempat Mitra Utama:** PT Telkom Akses (TKJ), Astra Honda Motor (TKRO), PLN ULP Pinrang (TITL).\n• **Repository PKL:** Anda dapat melihat dan mengunduh Sertifikat PKL, Modul K3, serta Form Laporan pada menu **Lab & PKL Industri** -> subtab **Jurnal Presisi PKL**.`;
+            }
+
+            if (query.includes('simulator') || query.includes('cara') || query.includes('pakai') || query.includes('hitung')) {
+                return `💡 **Panduan Penggunaan Simulator:**\n\n1. **Simulator Trigonometri Rangka Atap:** Masukkan nilai alas (x) dan tinggi (y) untuk menghitung panjang miring (r) dan sudut kemiringan (θ).\n2. **Simulator BEP Usaha:** Masukkan Biaya Tetap, Harga Jual, dan Biaya Variabel untuk menghitung titik impas omset usaha.`;
+            }
+
+            return `🤖 **AI Tutor JejakAngka:**\nSaya siap membantu menjawab pertanyaan Anda mengenai **"${q}"**.\n\nAnda dapat menanyakan soal matematika, teori kejuruan (TKJ, TKRO, DKV, TITL, AKL), penelusuran data alumni, tempat PKL, hingga topik umum lainnya!`;
+        }
+
+        let bepChartInstance = null;
+        let bmwChartInstance = null;
+        let keselarasanChartInstance = null;
+
+        function handleTopNavSearch(val) {
+            if (!val || val.trim() === '') return;
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = val;
+            switchTab('cards');
+        }
+
+        // NAVIGATION & TAB SWITCHING
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('tab-' + tabId);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-white', 'bg-gradient-to-r', 'from-blue-600', 'to-cyan-500', 'shadow-[0_0_18px_rgba(37,99,235,0.6)]', 'font-bold', 'border-cyan-300/40');
+                btn.classList.add('text-slate-300');
+            });
+            const activeNav = document.getElementById('nav-btn-' + tabId);
+            if (activeNav) {
+                activeNav.classList.remove('text-slate-300');
+                activeNav.classList.add('text-white', 'bg-gradient-to-r', 'from-blue-600', 'to-cyan-500', 'shadow-[0_0_18px_rgba(37,99,235,0.6)]', 'font-bold', 'border-cyan-300/40');
+            }
+
+            document.querySelectorAll('.mob-nav-btn').forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-cyan-500', 'text-white', 'font-bold', 'border-cyan-400/40');
+                btn.classList.add('bg-[#081028]', 'text-slate-300', 'border-blue-900/50');
+            });
+            const mobNav = document.getElementById('mob-nav-' + tabId);
+            if (mobNav) {
+                mobNav.classList.remove('bg-[#081028]', 'text-slate-300', 'border-blue-900/50');
+                mobNav.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-cyan-500', 'text-white', 'font-bold', 'border-cyan-400/40');
+            }
+
+            if (tabId === 'cards') renderCards();
+            if (tabId === 'analytics') renderAnalyticsCharts();
+            if (tabId === 'simulator') {
+                calcTrigo();
+                calcBEP();
+                calcPklRab();
+            }
+        }
+
+        function showSimSubTab(subId) {
+            const subtabs = ['materials', 'pkl', 'trigo', 'bep'];
+            subtabs.forEach(id => {
+                const el = document.getElementById('subtab-' + id);
+                const btn = document.getElementById('subnav-btn-' + id);
+                if (el) el.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('bg-cyan-600', 'text-white');
+                    btn.classList.add('bg-slate-800', 'text-slate-400');
+                }
+            });
+
+            const activeEl = document.getElementById('subtab-' + subId);
+            const activeBtn = document.getElementById('subnav-btn-' + subId);
+            if (activeEl) activeEl.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-800', 'text-slate-400');
+                activeBtn.classList.add('bg-cyan-600', 'text-white');
+            }
+
+            if (subId === 'trigo') calcTrigo();
+            if (subId === 'bep') calcBEP();
+            if (subId === 'pkl') calcPklRab();
+        }
+
+        function openSimulatorDirect(type) {
+            switchTab('simulator');
+            showSimSubTab(type);
+        }
+
+        // ROLE MANAGEMENT & LOGIN
+        function updateRoleUI() {
+            const roleBadge = document.getElementById('roleBadge');
+            const roleLabel = document.getElementById('roleLabel');
+            const roleIcon = document.getElementById('roleIcon');
+            const roleLoginBtn = document.getElementById('roleLoginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const manageTeachersBtn = document.getElementById('manageTeachersBtn');
+            const pinChangeBtn = document.getElementById('pinChangeBtn');
+            const teacherMatControls = document.getElementById('teacherMaterialControls');
+            const teacherPklControls = document.getElementById('teacherPklControls');
+            const pengelolaCardsActions = document.getElementById('pengelolaCardsActions');
+
+            if (currentRole === 'siswa') {
+                if (roleBadge) roleBadge.classList.add('hidden');
+                if (roleLoginBtn) roleLoginBtn.classList.remove('hidden');
+                if (logoutBtn) logoutBtn.classList.add('hidden');
+                if (manageTeachersBtn) manageTeachersBtn.classList.add('hidden');
+                if (pinChangeBtn) pinChangeBtn.classList.add('hidden');
+                if (teacherMatControls) teacherMatControls.classList.add('hidden');
+                if (teacherPklControls) teacherPklControls.classList.add('hidden');
+                if (pengelolaCardsActions) pengelolaCardsActions.classList.add('hidden');
+            } else {
+                if (roleBadge) {
+                    roleBadge.classList.remove('hidden');
+                    if (roleLabel) roleLabel.innerText = currentRole === 'admin' ? 'Admin BKK' : 'Guru Mapel';
+                    if (roleIcon) roleIcon.className = currentRole === 'admin' ? 'fa-solid fa-key text-purple-400' : 'fa-solid fa-user-tie text-cyan-400';
+                }
+                if (roleLoginBtn) roleLoginBtn.classList.add('hidden');
+                if (logoutBtn) logoutBtn.classList.remove('hidden');
+                if (teacherMatControls) teacherMatControls.classList.remove('hidden');
+                if (teacherPklControls) teacherPklControls.classList.remove('hidden');
+                if (pengelolaCardsActions) pengelolaCardsActions.classList.remove('hidden');
+
+                if (currentRole === 'admin') {
+                    if (manageTeachersBtn) manageTeachersBtn.classList.remove('hidden');
+                    if (pinChangeBtn) pinChangeBtn.classList.remove('hidden');
+                } else {
+                    if (manageTeachersBtn) manageTeachersBtn.classList.add('hidden');
+                    if (pinChangeBtn) pinChangeBtn.classList.add('hidden');
+                }
+            }
+
+            renderMaterials();
+            renderPklDocs();
+            renderCards();
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal')?.classList.remove('hidden');
+            document.getElementById('loginErrorMsg')?.classList.add('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal')?.classList.add('hidden');
+        }
+
+        function submitLogin() {
+            const role = document.getElementById('loginRoleSelect').value;
+            const pin = document.getElementById('loginPinInput').value.trim();
+            const errEl = document.getElementById('loginErrorMsg');
+
+            let isValid = false;
+            if (role === 'admin' && pin === adminPin) {
+                isValid = true;
+                currentRole = 'admin';
+            } else if (role === 'guru') {
+                if (pin === guruPin || authorizedTeachers.some(t => t.pin === pin && t.status === 'Aktif')) {
+                    isValid = true;
+                    currentRole = 'guru';
+                }
+            }
+
+            if (isValid) {
+                updateRoleUI();
+                closeLoginModal();
+                showToast(`Berhasil login sebagai Mode ${currentRole === 'admin' ? 'Admin BKK' : 'Guru Mapel'}!`, 'success');
+                document.getElementById('loginPinInput').value = '';
+            } else {
+                if (errEl) {
+                    errEl.innerText = 'PIN yang Anda masukkan salah!';
+                    errEl.classList.remove('hidden');
+                }
+            }
+        }
+
+        function quickLogin(role) {
+            currentRole = role;
+            updateRoleUI();
+            closeLoginModal();
+            showToast(`Login demo berhasil sebagai Mode ${role === 'admin' ? 'Admin BKK' : 'Guru Mapel'}!`, 'success');
+        }
+
+        function logoutRole() {
+            currentRole = 'siswa';
+            updateRoleUI();
+            showToast('Anda telah keluar dari Mode Pengelola.', 'info');
+        }
+
+        function openChangePinModal() {
+            if (document.getElementById('editCreatorNameInput')) document.getElementById('editCreatorNameInput').value = creatorName;
+            document.getElementById('changePinModal')?.classList.remove('hidden');
+        }
+
+        function closeChangePinModal() {
+            document.getElementById('changePinModal')?.classList.add('hidden');
+        }
+
+        function saveNewPins() {
+            const newCreator = document.getElementById('editCreatorNameInput')?.value.trim();
+            const newG = document.getElementById('newGuruPin').value.trim();
+            const newA = document.getElementById('newAdminPin').value.trim();
+
+            if (newCreator) {
+                creatorName = newCreator;
+                localStorage.setItem('ja_creatorName', creatorName);
+                updateCreatorDisplayUI();
+            }
+            if (newG) guruPin = newG;
+            if (newA) adminPin = newA;
+
+            closeChangePinModal();
+            showToast('Identitas pencipta & PIN keamanan berhasil diperbarui!', 'success');
+        }
+
+        // DATA ALUMNI RENDER & FILTER
+        function setFilter(filter, btn) {
+            activeFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
+                b.classList.add('bg-slate-900', 'text-slate-400', 'border-slate-800');
+            });
+            if (btn) {
+                btn.classList.remove('bg-slate-900', 'text-slate-400', 'border-slate-800');
+                btn.classList.add('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
+            }
+            renderCards();
+        }
+
+        function renderCards() {
+            const grid = document.getElementById('cardsGrid');
+            const searchVal = (document.getElementById('searchInput')?.value || '').toLowerCase();
+            if (!grid) return;
+
+            let filtered = alumniData.filter(item => {
+                const matchFilter = (activeFilter === 'SEMUA') || (item.status.toUpperCase() === activeFilter);
+                const matchSearch = item.nama.toLowerCase().includes(searchVal) ||
+                                    item.jurusan.toLowerCase().includes(searchVal) ||
+                                    item.tempat.toLowerCase().includes(searchVal) ||
+                                    item.posisi.toLowerCase().includes(searchVal);
+                return matchFilter && matchSearch;
+            });
+
+            if (document.getElementById('statTotal')) document.getElementById('statTotal').innerText = alumniData.length;
+            if (document.getElementById('statKerja')) document.getElementById('statKerja').innerText = alumniData.filter(d => d.status.includes('BEKERJA')).length;
+            if (document.getElementById('statWirausaha')) document.getElementById('statWirausaha').innerText = alumniData.filter(d => d.status.includes('WIRAUSAHA')).length;
+            if (document.getElementById('statKuliah')) document.getElementById('statKuliah').innerText = alumniData.filter(d => d.status.includes('KULIAH')).length;
+
+            grid.innerHTML = filtered.map((d, index) => {
+                let statusBadge = '<span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">💼 BEKERJA</span>';
+                if (d.status.includes('WIRAUSAHA')) {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 font-bold text-[10px] border border-amber-500/30">🏪 WIRAUSAHA</span>';
+                } else if (d.status.includes('KULIAH')) {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 font-bold text-[10px] border border-purple-500/30">🎓 KULIAH</span>';
+                } else if (d.status.includes('MENCARI')) {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-md bg-red-500/10 text-red-400 font-bold text-[10px] border border-red-500/30">🔍 MENCARI KERJA</span>';
+                }
+
+                const waBtn = (currentRole === 'guru' || currentRole === 'admin') ? `
+                    <button onclick="openParentBroadcastModal(${index})" class="px-3 py-1.5 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 text-xs font-bold transition flex items-center gap-1">
+                        <i class="fa-brands fa-whatsapp"></i> WA Ortualumni
+                    </button>
+                ` : '';
+
+                return `
+                    <div class="glass-card glass-card-hover p-5 rounded-2xl border border-slate-800 space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-start gap-2">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center font-black text-cyan-400 text-sm">
+                                    ${d.nama.charAt(0)}
+                                </div>
+                                ${statusBadge}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">${d.nama}</h4>
+                                <p class="text-xs text-cyan-400 font-medium">${d.jurusan} • Lulus ${d.lulusan}</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1 text-xs">
+                                <div class="text-slate-300 font-bold">${d.tempat}</div>
+                                <div class="text-slate-400 text-[11px]">${d.posisi}</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 border-t border-slate-800/80">
+                            <span class="text-[10px] text-slate-500 font-mono">Keselarasan: ${d.keselarasan || 'Sesuai'}</span>
+                            ${waBtn}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // TEACHER MANAGEMENT
+        function openManageTeachersModal() {
+            renderTeacherList();
+            document.getElementById('manageTeachersModal')?.classList.remove('hidden');
+        }
+
+        function closeManageTeachersModal() {
+            document.getElementById('manageTeachersModal')?.classList.add('hidden');
+        }
+
+        function resetTeacherForm() {
+            document.getElementById('teacherEditId').value = '';
+            document.getElementById('teacherNama').value = '';
+            document.getElementById('teacherNip').value = '';
+            document.getElementById('teacherMapel').value = '';
+            document.getElementById('teacherPin').value = '';
+            document.getElementById('teacherStatus').value = 'Aktif';
+            document.getElementById('teacherFormTitle').innerText = 'Tambah Guru Terotorisasi Baru:';
+        }
+
+        function renderTeacherList() {
+            const container = document.getElementById('teacherListContainer');
+            const badge = document.getElementById('teacherCountBadge');
+            if (badge) badge.innerText = `${authorizedTeachers.length} Guru`;
+
+            if (container) {
+                container.innerHTML = authorizedTeachers.map(t => `
+                    <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center text-xs">
+                        <div>
+                            <div class="font-bold text-white">${t.nama} <span class="text-[10px] text-cyan-400 font-normal">(${t.mapel})</span></div>
+                            <div class="text-[10px] text-slate-400">NIP: ${t.nip} • PIN: ${t.pin} • Status: <span class="${t.status === 'Aktif' ? 'text-emerald-400' : 'text-red-400'} font-bold">${t.status}</span></div>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <button onclick="editTeacherAccess(${t.id})" class="px-2 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-lg text-[10px] font-bold">Edit</button>
+                            <button onclick="deleteTeacherAccess(${t.id})" class="px-2 py-1 bg-red-500/20 text-red-300 border border-red-500/30 rounded-lg text-[10px] font-bold">Hapus</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function saveTeacherAccess(e) {
+            e.preventDefault();
+            const editId = document.getElementById('teacherEditId').value;
+            const nama = document.getElementById('teacherNama').value.trim();
+            const nip = document.getElementById('teacherNip').value.trim();
+            const mapel = document.getElementById('teacherMapel').value.trim();
+            const pin = document.getElementById('teacherPin').value.trim();
+            const status = document.getElementById('teacherStatus').value;
+
+            if (editId) {
+                const item = authorizedTeachers.find(t => t.id === parseInt(editId));
+                if (item) {
+                    item.nama = nama;
+                    item.nip = nip;
+                    item.mapel = mapel;
+                    item.pin = pin;
+                    item.status = status;
+                }
+            } else {
+                authorizedTeachers.push({
+                    id: Date.now(),
+                    nama, nip, mapel, pin, status
+                });
+            }
+
+            saveToLocalStorage();
+            resetTeacherForm();
+            renderTeacherList();
+            showToast('Otorisasi guru berhasil disimpan!', 'success');
+        }
+
+        function editTeacherAccess(id) {
+            const item = authorizedTeachers.find(t => t.id === id);
+            if (!item) return;
+            document.getElementById('teacherEditId').value = item.id;
+            document.getElementById('teacherNama').value = item.nama;
+            document.getElementById('teacherNip').value = item.nip;
+            document.getElementById('teacherMapel').value = item.mapel;
+            document.getElementById('teacherPin').value = item.pin;
+            document.getElementById('teacherStatus').value = item.status;
+            document.getElementById('teacherFormTitle').innerText = 'Edit Otorisasi Guru:';
+        }
+
+        function deleteTeacherAccess(id) {
+            showConfirm('Apakah Anda yakin ingin menghapus akses guru ini?', () => {
+                authorizedTeachers = authorizedTeachers.filter(t => t.id !== id);
+                saveToLocalStorage();
+                renderTeacherList();
+                showToast('Akses guru berhasil dihapus.', 'info');
+            });
+        }
+
+        // FILE UPLOAD HANDLERS
+        function handleFileUpload(event, prefix) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.size > 15 * 1024 * 1024) {
+                showToast('Ukuran file melebihi batas maksimal 15MB!', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedFileMap[prefix] = {
+                    name: file.name,
+                    dataUrl: e.target.result
+                };
+                const statusEl = document.getElementById(`${prefix}FileStatus`);
+                const nameEl = document.getElementById(`${prefix}FileName`);
+                if (statusEl && nameEl) {
+                    nameEl.innerText = file.name;
+                    statusEl.classList.remove('hidden');
+                }
+                showToast(`File "${file.name}" siap diunggah!`, 'success');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearUploadedFile(prefix) {
+            uploadedFileMap[prefix] = null;
+            const fileInput = document.getElementById(`${prefix}FileInput`);
+            if (fileInput) fileInput.value = '';
+            const statusEl = document.getElementById(`${prefix}FileStatus`);
+            if (statusEl) statusEl.classList.add('hidden');
+        }
+
+        // MATERIALS CRUD & RENDER
+        let editingMatId = null;
+
+        function openAddMaterialModal() {
+            editingMatId = null;
+            document.getElementById('matModalTitle').innerText = 'Kelola Modul Pembelajaran';
+            document.getElementById('matTitle').value = '';
+            document.getElementById('matJurusan').value = 'TKRO';
+            document.getElementById('matType').value = 'video';
+            document.getElementById('matUrl').value = '';
+            document.getElementById('matDesc').value = '';
+            clearUploadedFile('mat');
+            document.getElementById('addMaterialModal')?.classList.remove('hidden');
+        }
+
+        function closeMaterialModal() {
+            document.getElementById('addMaterialModal')?.classList.add('hidden');
+        }
+
+        function saveMaterial(e) {
+            e.preventDefault();
+            const title = document.getElementById('matTitle').value.trim();
+            const jurusan = document.getElementById('matJurusan').value;
+            const type = document.getElementById('matType').value;
+            let url = document.getElementById('matUrl').value.trim();
+            const desc = document.getElementById('matDesc').value.trim();
+
+            if (uploadedFileMap.mat) {
+                url = uploadedFileMap.mat.dataUrl;
+            }
+
+            if (editingMatId) {
+                const item = materialsData.find(m => m.id === editingMatId);
+                if (item) {
+                    item.title = title;
+                    item.jurusan = jurusan;
+                    item.type = type;
+                    item.url = url || item.url;
+                    item.desc = desc;
+                }
+            } else {
+                materialsData.push({
+                    id: Date.now(),
+                    title, jurusan, type, url: url || '#', desc
+                });
+            }
+
+            saveToLocalStorage();
+            closeMaterialModal();
+            renderMaterials();
+            showToast('Modul pembelajaran berhasil disimpan!', 'success');
+        }
+
+        function editMaterial(id) {
+            const item = materialsData.find(m => m.id === id);
+            if (!item) return;
+            editingMatId = id;
+            document.getElementById('matModalTitle').innerText = 'Edit Modul Pembelajaran';
+            document.getElementById('matTitle').value = item.title;
+            document.getElementById('matJurusan').value = item.jurusan;
+            document.getElementById('matType').value = item.type;
+            document.getElementById('matUrl').value = item.url.startsWith('data:') ? '' : item.url;
+            document.getElementById('matDesc').value = item.desc;
+            document.getElementById('addMaterialModal')?.classList.remove('hidden');
+        }
+
+        function deleteMaterial(id) {
+            showConfirm('Hapus modul pembelajaran ini?', () => {
+                materialsData = materialsData.filter(m => m.id !== id);
+                saveToLocalStorage();
+                renderMaterials();
+                showToast('Modul berhasil dihapus.', 'info');
+            });
+        }
+
+        function renderMaterials() {
+            const grid = document.getElementById('materialsGrid');
+            if (!grid) return;
+
+            grid.innerHTML = materialsData.map(m => {
+                let typeBadge = '<span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 font-bold text-[10px]"><i class="fa-solid fa-video"></i> Video</span>';
+                let actionBtn = `<button onclick="watchVideoModal(${m.id})" class="px-3.5 py-1.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5 shadow-md shadow-cyan-500/20"><i class="fa-solid fa-circle-play"></i> Tonton Video</button>`;
+
+                if (m.type === 'pdf') {
+                    typeBadge = '<span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 font-bold text-[10px]"><i class="fa-solid fa-file-pdf"></i> Dokumen PDF</span>';
+                    actionBtn = `<button onclick="handleMaterialDownload(${m.id})" class="px-3.5 py-1.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5"><i class="fa-solid fa-download"></i> Unduh PDF</button>`;
+                } else if (m.type === 'ppt') {
+                    typeBadge = '<span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 font-bold text-[10px]"><i class="fa-solid fa-file-powerpoint"></i> Slide PPT</span>';
+                    actionBtn = `<button onclick="handleMaterialDownload(${m.id})" class="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5"><i class="fa-solid fa-download"></i> Unduh PPT</button>`;
+                } else if (m.type === 'quiz') {
+                    typeBadge = '<span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 font-bold text-[10px]"><i class="fa-solid fa-pen-to-square"></i> Kuis Asesmen</span>';
+                    actionBtn = `<button onclick="handleMaterialDownload(${m.id})" class="px-3.5 py-1.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-white font-bold text-xs transition flex items-center gap-1.5"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Kuis</button>`;
+                }
+
+                const adminButtons = (currentRole === 'guru' || currentRole === 'admin') ? `
+                    <div class="flex gap-1.5 pt-2 border-t border-slate-800">
+                        <button onclick="editMaterial(${m.id})" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-[10px] font-bold">Edit</button>
+                        <button onclick="deleteMaterial(${m.id})" class="px-2 py-1 bg-red-500/20 text-red-300 rounded-lg text-[10px] font-bold">Hapus</button>
+                    </div>
+                ` : '';
+
+                return `
+                    <div class="glass-card glass-card-hover p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                ${typeBadge}
+                                <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300">${m.jurusan}</span>
+                            </div>
+                            <h4 class="font-bold text-sm text-white">${m.title}</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">${m.desc}</p>
+                        </div>
+                        <div class="space-y-2 pt-2">
+                            ${actionBtn}
+                            ${adminButtons}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // PKL DOCS CRUD & RENDER
+        let editingPklDocId = null;
+
+        function openPklDocModal() {
+            editingPklDocId = null;
+            document.getElementById('pklDocModalTitle').innerText = 'Upload Dokumen / Sertifikat PKL';
+            document.getElementById('pklDocTitle').value = '';
+            document.getElementById('pklDocType').value = 'sertifikat';
+            document.getElementById('pklDocJurusan').value = 'TKRO';
+            document.getElementById('pklDocUrl').value = '';
+            document.getElementById('pklDocDesc').value = '';
+            clearUploadedFile('pkl');
+            document.getElementById('pklDocModal')?.classList.remove('hidden');
+        }
+
+        function closePklDocModal() {
+            document.getElementById('pklDocModal')?.classList.add('hidden');
+        }
+
+        function savePklDoc(e) {
+            e.preventDefault();
+            const title = document.getElementById('pklDocTitle').value.trim();
+            const type = document.getElementById('pklDocType').value;
+            const jurusan = document.getElementById('pklDocJurusan').value;
+            let url = document.getElementById('pklDocUrl').value.trim();
+            const desc = document.getElementById('pklDocDesc').value.trim();
+
+            if (uploadedFileMap.pkl) {
+                url = uploadedFileMap.pkl.dataUrl;
+            }
+
+            if (editingPklDocId) {
+                const item = pklDocsData.find(p => p.id === editingPklDocId);
+                if (item) {
+                    item.title = title;
+                    item.type = type;
+                    item.jurusan = jurusan;
+                    item.url = url || item.url;
+                    item.desc = desc;
+                }
+            } else {
+                pklDocsData.push({
+                    id: Date.now(),
+                    title, type, jurusan, url: url || '#', desc
+                });
+            }
+
+            saveToLocalStorage();
+            closePklDocModal();
+            renderPklDocs();
+            showToast('Dokumen/Sertifikat PKL berhasil disimpan!', 'success');
+        }
+
+        function editPklDoc(id) {
+            const item = pklDocsData.find(p => p.id === id);
+            if (!item) return;
+            editingPklDocId = id;
+            document.getElementById('pklDocModalTitle').innerText = 'Edit Dokumen / Sertifikat PKL';
+            document.getElementById('pklDocTitle').value = item.title;
+            document.getElementById('pklDocType').value = item.type;
+            document.getElementById('pklDocJurusan').value = item.jurusan;
+            document.getElementById('pklDocUrl').value = item.url.startsWith('data:') ? '' : item.url;
+            document.getElementById('pklDocDesc').value = item.desc;
+            document.getElementById('pklDocModal')?.classList.remove('hidden');
+        }
+
+        function deletePklDoc(id) {
+            showConfirm('Hapus dokumen/sertifikat PKL ini?', () => {
+                pklDocsData = pklDocsData.filter(p => p.id !== id);
+                saveToLocalStorage();
+                renderPklDocs();
+                showToast('Dokumen PKL berhasil dihapus.', 'info');
+            });
+        }
+
+        function renderPklDocs() {
+            const grid = document.getElementById('pklDocsGrid');
+            const searchVal = (document.getElementById('pklSearchInput')?.value || '').toLowerCase();
+            const filterType = document.getElementById('pklTypeFilter')?.value || 'ALL';
+            if (!grid) return;
+
+            const filtered = pklDocsData.filter(d => {
+                const matchType = (filterType === 'ALL') || (d.type === filterType);
+                const matchSearch = d.title.toLowerCase().includes(searchVal) ||
+                                    d.jurusan.toLowerCase().includes(searchVal) ||
+                                    d.desc.toLowerCase().includes(searchVal);
+                return matchType && matchSearch;
+            });
+
+            grid.innerHTML = filtered.map(d => {
+                let badge = '<span class="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 font-bold text-[10px]"><i class="fa-solid fa-certificate"></i> Sertifikat PKL</span>';
+                if (d.type === 'materi') badge = '<span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-bold text-[10px]"><i class="fa-solid fa-book"></i> Materi PKL</span>';
+                if (d.type === 'laporan') badge = '<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold text-[10px]"><i class="fa-solid fa-file-lines"></i> Format Laporan</span>';
+                if (d.type === 'ppt') badge = '<span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-bold text-[10px]"><i class="fa-solid fa-file-powerpoint"></i> Slide PPT</span>';
+
+                const adminBtns = (currentRole === 'guru' || currentRole === 'admin') ? `
+                    <div class="flex gap-1.5 pt-2 border-t border-slate-800">
+                        <button onclick="editPklDoc(${d.id})" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-[10px] font-bold">Edit</button>
+                        <button onclick="deletePklDoc(${d.id})" class="px-2 py-1 bg-red-500/20 text-red-300 rounded-lg text-[10px] font-bold">Hapus</button>
+                    </div>
+                ` : '';
+
+                return `
+                    <div class="glass-card glass-card-hover p-4 rounded-2xl border border-slate-800 space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                ${badge}
+                                <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 font-bold text-[10px] text-slate-300">${d.jurusan}</span>
+                            </div>
+                            <h4 class="font-bold text-xs text-white">${d.title}</h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">${d.desc}</p>
+                        </div>
+                        <div class="space-y-2">
+                            <button onclick="handlePklDownload(${d.id})" class="w-full py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-download"></i> Unduh Berkas
+                            </button>
+                            ${adminBtns}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // SIMULATORS & LKPD GENERATOR
+        function downloadLkpd(type) {
+            const printWin = window.open('', '_blank', 'width=900,height=750');
+            if (!printWin) return;
+
+            let title = '';
+            let contentHtml = '';
+
+            if (type === 'trigo') {
+                title = 'LKPD 01 - SIMULATOR TRIGONOMETRI PRESISI RANGKA ATAP';
+                const xVal = document.getElementById('trigoX')?.value || '6';
+                const yVal = document.getElementById('trigoY')?.value || '3';
+                const rVal = document.getElementById('trigoR')?.innerText || '6.71 m';
+                const angleVal = document.getElementById('trigoAngle')?.innerText || '26.57°';
+
+                contentHtml = `
+                    <div style="border-bottom: 2px solid #0284c7; padding-bottom: 10px; margin-bottom: 15px;">
+                        <h2 style="margin:0; font-size:16px; color:#0f172a;">LEMBAR KERJA PESERTA DIDIK (LKPD) PRAKTIKUM DIGITAL</h2>
+                        <h3 style="margin:4px 0 0 0; font-size:14px; color:#0284c7;">MODUL TRIGONOMETRI PRESISI RANGKA ATAP (TKRO & TITL)</h3>
+                        <p style="margin:2px 0 0 0; font-size:11px; color:#64748b;">UPT SMKN 3 PINRANG • Guru Pengampu / Pencipta Karya: <strong>${creatorName}</strong></p>
+                    </div>
+
+                    <table style="width:100%; border-collapse:collapse; margin-bottom:15px; font-size:11px;">
+                        <tr><td style="width:120px; font-weight:bold; padding:4px 0;">Nama Siswa:</td><td>_______________________</td><td style="width:100px; font-weight:bold; padding:4px 0;">Kelas / Jurusan:</td><td>___________ / ___________</td></tr>
+                        <tr><td style="font-weight:bold; padding:4px 0;">Tanggal Praktikum:</td><td>${new Date().toLocaleDateString('id-ID')}</td><td style="font-weight:bold; padding:4px 0;">Kelompok:</td><td>___________</td></tr>
+                    </table>
+
+                    <h4 style="font-size:12px; margin:10px 0 5px 0; color:#0f172a;">A. TUJUAN PRAKTIKUM</h4>
+                    <p style="font-size:11px; margin:0 0 10px 0; color:#334155;">1. Menghitung panjang miring rangka atap menggunakan Teorema Pythagoras: r = √(x² + y²).<br>2. Menentukan sudut kemiringan presisi menggunakan rasio trigonometri: tan θ = y / x.<br>3. Menganalisis tingkat presisi keamanan sudut konstruksi ideal (30° - 40°).</p>
+
+                    <h4 style="font-size:12px; margin:10px 0 5px 0; color:#0f172a;">B. TABEL HASIL OBSERVASI SIMULATOR</h4>
+                    <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
+                        <thead>
+                            <tr style="background:#f1f5f9;">
+                                <th style="border:1px solid #94a3b8; padding:6px;">Percobaan</th>
+                                <th style="border:1px solid #94a3b8; padding:6px;">Panjang Alas (x)</th>
+                                <th style="border:1px solid #94a3b8; padding:6px;">Tinggi Puncak (y)</th>
+                                <th style="border:1px solid #94a3b8; padding:6px;">Panjang Miring (r)</th>
+                                <th style="border:1px solid #94a3b8; padding:6px;">Sudut Kemiringan (θ)</th>
+                                <th style="border:1px solid #94a3b8; padding:6px;">Status Presisi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border:1px solid #94a3b8; padding:6px; text-align:center;">1 (Input Saat Ini)</td>
+                                <td style="border:1px solid #94a3b8; padding:6px; text-align:center;">${xVal} m</td>
+                                <td style="border:1px solid #94a3b8; padding:6px; text-align:center;">${yVal} m</td>
+                                <td style="border:1px solid #94a3b8; padding:6px; text-align:center; font-weight:bold;">${rVal}</td>
+                                <td style="border:1px solid #94a3b8; padding:6px; text-align:center; font-weight:bold;">${angleVal}</td>
+                                <td style="border:1px solid #94a3b8; padding:6px; text-align:center;">Tercatat Otomatis</td>
+                            </tr>
+                            <tr><td style="border:1px solid #94a3b8; padding:6px; text-align:center;">2</td><td style="border:1px solid #94a3b8; padding:6px;"></td><td style="border:1px solid #94a3b8; padding:6px;"></td><td style="border:1px solid #94a3b8; padding:6px;"></td><td style="border:1px solid #94a3b8; padding:6px;"></td><td style="border:1px solid #94a3b8; padding:6px;"></td></tr>
+                            <tr><td style="border:1px solid #94a3b8; padding:6px; text-align:center;">3</td><td style="border:1px solid #94a3b8; padding:6px;"></td><td style="border:1px solid #94a3b8; padding:6px;"></td><td style="border:1px solid #94a3b8; padding:6px;"></td><td style="border:1px solid #94a3b8; padding:6px;"></td><td style="border:1px solid #94a3b8; padding:6px;"></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 style="font-size:12px; margin:10px 0 5px 0; color:#0f172a;">C. SOAL ANALISIS KASUS INDUSTRI</h4>
+                    <p style="font-size:11px; margin:0 0 5px 0;">1. Mengapa sudut di bawah 30° berisiko merusak struktur atap saat curah hujan tinggi?</p>
+                    <div style="border:1px solid #cbd5e1; height:45px; border-radius:6px; margin-bottom:10px;"></div>
+                    <p style="font-size:11px; margin:0 0 5px 0;">2. Hitung kebutuhan panjang material miring jika sebuah bengkel memiliki panjang alas 12 meter dan tinggi puncak 5 meter!</p>
+                    <div style="border:1px solid #cbd5e1; height:45px; border-radius:6px; margin-bottom:15px;"></div>
+                `;
+            } else if (type === 'bep') {
+                title = 'LKPD 02 - SIMULATOR ARITMETIKA FINANSIAL BEP USAHA ALUMNI';
+                const fcVal = document.getElementById('bepFC')?.value || '1500000';
+                const priceVal = document.getElementById('bepPrice')?.value || '25000';
+                const vcVal = document.getElementById('bepVC')?.value || '15000';
+                const unitVal = document.getElementById('bepResultUnit')?.innerText || '150 Unit';
+                const rupiahVal = document.getElementById('bepResultRupiah')?.innerText || 'Rp 3.750.000';
+
+                contentHtml = `
+                    <div style="border-bottom: 2px solid #059669; padding-bottom: 10px; margin-bottom: 15px;">
+                        <h2 style="margin:0; font-size:16px; color:#0f172a;">LEMBAR KERJA PESERTA DIDIK (LKPD) PRAKTIKUM DIGITAL</h2>
+                        <h3 style="margin:4px 0 0 0; font-size:14px; color:#059669;">MODUL ARITMETIKA FINANSIAL BEP USAHA (AKL & WIRAUSAHA)</h3>
+                        <p style="margin:2px 0 0 0; font-size:11px; color:#64748b;">UPT SMKN 3 PINRANG • Guru Pengampu / Pencipta Karya: <strong>${creatorName}</strong></p>
+                    </div>
+
+                    <table style="width:100%; border-collapse:collapse; margin-bottom:15px; font-size:11px;">
+                        <tr><td style="width:120px; font-weight:bold; padding:4px 0;">Nama Siswa:</td><td>_______________________</td><td style="width:100px; font-weight:bold; padding:4px 0;">Kelas / Jurusan:</td><td>___________ / ___________</td></tr>
+                        <tr><td style="font-weight:bold; padding:4px 0;">Tanggal Praktikum:</td><td>${new Date().toLocaleDateString('id-ID')}</td><td style="font-weight:bold; padding:4px 0;">Kelompok:</td><td>___________</td></tr>
+                    </table>
+
+                    <h4 style="font-size:12px; margin:10px 0 5px 0; color:#0f172a;">A. TUJUAN PRAKTIKUM</h4>
+                    <p style="font-size:11px; margin:0 0 10px 0; color:#334155;">1. Menghitung Margin Kontribusi per unit produk usaha: Margin = Price - VC.<br>2. Menentukan Titik Impas Penjualan (BEP Unit): BEP = Biaya Tetap / (Harga Jual - Biaya Variabel).<br>3. Menganalisis proyeksi omset minimal agar usaha alumni terhindar dari kerugian.</p>
+
+                    <h4 style="font-size:12px; margin:10px 0 5px 0; color:#0f172a;">B. SIMULASI PERHITUNGAN BEP HASIL SIMULATOR</h4>
+                    <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:15px;">
+                        <thead>
+                            <tr style="background:#f1f5f9;">
+                                <th style="border:1px solid #94a3b8; padding:6px;">Komponen Keuangan</th>
+                                <th style="border:1px solid #94a3b8; padding:6px;">Nilai Input</th>
+                                <th style="border:1px solid #94a3b8; padding:6px;">Hasil Kalkulasi BEP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="border:1px solid #94a3b8; padding:6px;">Biaya Tetap (Fixed Cost)</td><td style="border:1px solid #94a3b8; padding:6px;">Rp ${parseInt(fcVal).toLocaleString('id-ID')}</td><td style="border:1px solid #94a3b8; padding:6px; font-weight:bold; color:#059669;" rowspan="3">BEP Unit: ${unitVal}<br>${rupiahVal}</td></tr>
+                            <tr><td style="border:1px solid #94a3b8; padding:6px;">Harga Jual per Unit (Price)</td><td style="border:1px solid #94a3b8; padding:6px;">Rp ${parseInt(priceVal).toLocaleString('id-ID')}</td></tr>
+                            <tr><td style="border:1px solid #94a3b8; padding:6px;">Biaya Variabel per Unit (Variable Cost)</td><td style="border:1px solid #94a3b8; padding:6px;">Rp ${parseInt(vcVal).toLocaleString('id-ID')}</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 style="font-size:12px; margin:10px 0 5px 0; color:#0f172a;">C. REKOMENDASI MANAJEMEN USAHA SISWA</h4>
+                    <p style="font-size:11px; margin:0 0 5px 0;">1. Jika unit terjual di bawah angka BEP unit, kondisi keuangan usaha mengalami ( Laba / Impas / Rugi )?</p>
+                    <div style="border:1px solid #cbd5e1; height:35px; border-radius:6px; margin-bottom:10px;"></div>
+                    <p style="font-size:11px; margin:0 0 5px 0;">2. Strategi apa yang dapat dilakukan untuk menurunkan titik impas BEP tanpa mengorbankan kualitas produk?</p>
+                    <div style="border:1px solid #cbd5e1; height:45px; border-radius:6px; margin-bottom:15px;"></div>
+                `;
+            }
+
+            printWin.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${title}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 30px; color: #0f172a; background: #fff; line-height: 1.4; }
+                        .footer { margin-top: 30px; border-top: 1px dashed #cbd5e1; padding-top: 10px; font-size: 10px; color: #64748b; text-align: center; }
+                    </style>
+                </head>
+                <body>
+                    ${contentHtml}
+                    <div class="footer">
+                        Dokumen Resmi LKPD Praktikum Matematika Vokasi • UPT SMKN 3 Pinrang • Pencipta Karya: ${creatorName} • Dicetak pada ${new Date().toLocaleDateString('id-ID')}
+                    </div>
+                    <script>window.onload = function() { window.print(); };<\/script>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+            showToast('Menyiapkan Lembar Kerja Peserta Didik (LKPD) siap cetak...', 'success');
+        }
+
+        function calcPklRab() {
+            const harga = parseFloat(document.getElementById('pklHargaBahan')?.value) || 0;
+            const qty = parseFloat(document.getElementById('pklQtyBahan')?.value) || 0;
+            const waste = parseFloat(document.getElementById('pklWaste')?.value) || 0;
+            const jasa = parseFloat(document.getElementById('pklJasa')?.value) || 0;
+
+            const subtotalBahan = harga * qty;
+            const wasteAmount = subtotalBahan * (waste / 100);
+            const totalRab = subtotalBahan + wasteAmount + jasa;
+
+            const formatRp = (num) => 'Rp ' + Math.round(num).toLocaleString('id-ID');
+
+            if (document.getElementById('pklSubtotalBahan')) document.getElementById('pklSubtotalBahan').innerText = formatRp(subtotalBahan);
+            if (document.getElementById('pklSubtotalWaste')) document.getElementById('pklSubtotalWaste').innerText = formatRp(wasteAmount);
+            if (document.getElementById('pklTotalRab')) document.getElementById('pklTotalRab').innerText = formatRp(totalRab);
+        }
+
+        function calcTrigo() {
+            const x = parseFloat(document.getElementById('trigoX')?.value) || 6;
+            const y = parseFloat(document.getElementById('trigoY')?.value) || 3;
+
+            if (document.getElementById('valTrigoX')) document.getElementById('valTrigoX').innerText = `${x.toFixed(1)} meter`;
+            if (document.getElementById('valTrigoY')) document.getElementById('valTrigoY').innerText = `${y.toFixed(1)} meter`;
+
+            const r = Math.sqrt(x * x + y * y);
+            const angleRad = Math.atan2(y, x);
+            const angleDeg = angleRad * (180 / Math.PI);
+
+            if (document.getElementById('trigoR')) document.getElementById('trigoR').innerText = `${r.toFixed(2)} m`;
+            if (document.getElementById('trigoAngle')) document.getElementById('trigoAngle').innerText = `${angleDeg.toFixed(2)}°`;
+
+            const statusEl = document.getElementById('trigoStatus');
+            if (statusEl) {
+                if (angleDeg < 30) {
+                    statusEl.className = 'p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs text-center font-bold';
+                    statusEl.innerHTML = '⚠️ Sudut agak landai (&lt; 30°), risiko genangan air hujan.';
+                } else if (angleDeg > 45) {
+                    statusEl.className = 'p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs text-center font-bold';
+                    statusEl.innerHTML = '⚠️ Sudut terlalu curam (&gt; 45°), penggunaan bahan atap boros.';
+                } else {
+                    statusEl.className = 'p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs text-center font-bold';
+                    statusEl.innerHTML = '✅ Sudut ideal presisi konstruksi atap (30° - 45°).';
+                }
+            }
+
+            const canvas = document.getElementById('trigoCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const padX = 50;
+            const padY = 40;
+            const maxW = w - padX * 2;
+            const maxH = h - padY * 2;
+            const scale = Math.min(maxW / 15, maxH / 10);
+
+            const drawX = x * scale;
+            const drawY = y * scale;
+            const startX = padX;
+            const startY = h - padY;
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(startX + drawX, startY);
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(startX + drawX, startY);
+            ctx.lineTo(startX + drawX, startY - drawY);
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(startX + drawX, startY - drawY);
+            ctx.strokeStyle = '#a855f7';
+            ctx.lineWidth = 4;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(startX, startY, 35, 0, -angleRad, true);
+            ctx.strokeStyle = '#22d3ee';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.fillStyle = '#22d3ee';
+            ctx.font = 'bold 12px sans-serif';
+            ctx.fillText(`${angleDeg.toFixed(1)}°`, startX + 42, startY - 12);
+        }
+
+        function calcBEP() {
+            const fc = parseFloat(document.getElementById('bepFC')?.value) || 0;
+            const price = parseFloat(document.getElementById('bepPrice')?.value) || 0;
+            const vc = parseFloat(document.getElementById('bepVC')?.value) || 0;
+
+            const margin = price - vc;
+            const bepUnit = margin > 0 ? Math.ceil(fc / margin) : 0;
+            const bepRupiah = bepUnit * price;
+
+            const formatRp = (n) => 'Rp ' + Math.round(n).toLocaleString('id-ID');
+
+            if (document.getElementById('bepResultUnit')) document.getElementById('bepResultUnit').innerText = `${bepUnit} Unit`;
+            if (document.getElementById('bepResultRupiah')) document.getElementById('bepResultRupiah').innerText = `Total Omset: ${formatRp(bepRupiah)}`;
+            if (document.getElementById('bepResultMargin')) document.getElementById('bepResultMargin').innerText = `Margin Kontribusi: ${formatRp(margin)} / unit`;
+
+            const ctx = document.getElementById('bepChart')?.getContext('2d');
+            if (!ctx) return;
+
+            if (bepChartInstance) bepChartInstance.destroy();
+
+            const units = [0, Math.round(bepUnit * 0.5), bepUnit, Math.round(bepUnit * 1.5), Math.round(bepUnit * 2)];
+            const revenue = units.map(u => u * price);
+            const totalCost = units.map(u => fc + (u * vc));
+
+            bepChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: units.map(u => `${u} Unit`),
+                    datasets: [
+                        { label: 'Total Pendapatan (Omset)', data: revenue, borderColor: '#10b981', backgroundColor: '#10b98122', fill: false, tension: 0.1 },
+                        { label: 'Total Biaya (Fixed + Var)', data: totalCost, borderColor: '#ef4444', backgroundColor: '#ef444422', fill: false, tension: 0.1 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a3b8' } } },
+                    scales: {
+                        x: { ticks: { color: '#94a3b8' } },
+                        y: { ticks: { color: '#94a3b8' } }
+                    }
+                }
+            });
+        }
+
+        // TRACER STUDY FORM & CV ATS GENERATOR
+        function setStarRating(rating) {
+            currentRating = rating;
+            const stars = document.querySelectorAll('#starRatingBox .star-btn');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.className = 'fa-solid fa-star star-btn text-amber-400';
+                } else {
+                    star.className = 'fa-regular fa-star star-btn text-slate-600';
+                }
+            });
+            const textEl = document.getElementById('starRatingText');
+            if (textEl) textEl.innerText = `(${rating} / 5 - ${rating >= 4 ? 'Sangat Bermanfaat' : 'Cukup Bermanfaat'})`;
+        }
+
+        function handleTracerSubmit(e) {
+            e.preventDefault();
+            const nama = document.getElementById('tNama').value.trim();
+            const lulusan = document.getElementById('tLulusan').value;
+            const jurusan = document.getElementById('tJurusan').value;
+            const status = document.getElementById('tStatus').value;
+            const tempat = document.getElementById('tTempat').value.trim();
+            const posisi = document.getElementById('tPosisi').value.trim();
+            const wa = document.getElementById('tWa').value.trim();
+
+            alumniData.unshift({
+                nama, lulusan, jurusan, status, tempat, posisi, wa, keselarasan: 'Sesuai'
+            });
+
+            saveToLocalStorage();
+            renderCards();
+
+            if (document.getElementById('cardNama')) document.getElementById('cardNama').innerText = nama;
+            if (document.getElementById('cardJurusan')) document.getElementById('cardJurusan').innerText = `${jurusan} • Lulus ${lulusan}`;
+            if (document.getElementById('cardStatus')) document.getElementById('cardStatus').innerText = `Status: ${status}`;
+            if (document.getElementById('cardInstansi')) document.getElementById('cardInstansi').innerText = `${tempat} (${posisi})`;
+
+            const atsCvPreview = document.getElementById('atsCvPreview');
+            if (atsCvPreview) {
+                atsCvPreview.innerHTML = `
+                    <div style="border-bottom: 2px solid #38bdf8; padding-bottom: 8px; margin-bottom: 10px;">
+                        <h3 style="font-size: 16px; font-weight: bold; color: #fff;">${nama.toUpperCase()}</h3>
+                        <p style="font-size: 11px; color: #38bdf8;">Alumni ${jurusan} SMKN 3 Pinrang (Lulus ${lulusan}) | HP: ${wa}</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 12px; font-weight: bold; color: #22d3ee;">PROFIL PROFESIONAL</h4>
+                        <p style="font-size: 11px; color: #cbd5e1;">Lulusan kejuruan SMKN 3 Pinrang yang memiliki kompetensi terapan di bidang ${jurusan}. Saat ini aktif berkarya sebagai ${posisi} di ${tempat}.</p>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <h4 style="font-size: 12px; font-weight: bold; color: #22d3ee;">PENGALAMAN / STATUS SAAT INI</h4>
+                        <p style="font-size: 11px; color: #cbd5e1;">• <strong>${posisi}</strong> - ${tempat} (Status: ${status})</p>
+                    </div>
+                `;
+            }
+
+            document.getElementById('atsCvModal')?.classList.remove('hidden');
+            showToast('Data Tracer Study berhasil disimpan permanen!', 'success');
+        }
+
+        function closeAtsCvModal() {
+            document.getElementById('atsCvModal')?.classList.add('hidden');
+        }
+
+        function printCvPdf() {
+            const nama = document.getElementById('cardNama')?.innerText || 'Alumni';
+            const cvContent = document.getElementById('atsCvPreview')?.innerHTML || '';
+            const printWin = window.open('', '_blank', 'width=800,height=700');
+            if (printWin) {
+                printWin.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Curriculum Vitae ATS - ${nama}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 40px; color: #000; background: #fff; line-height: 1.5; }
+                            h3 { color: #000 !important; }
+                            p { color: #333 !important; }
+                        </style>
+                    </head>
+                    <body>
+                        ${cvContent}
+                        <script>window.onload = function() { window.print(); };<\/script>
+                    </body>
+                    </html>
+                `);
+                printWin.document.close();
+            }
+        }
+
+        function watchVideoModal(id) {
+            const item = materialsData.find(m => m.id === id);
+            if (!item) return;
+
+            const titleEl = document.getElementById('videoModalTitle');
+            const iframe = document.getElementById('videoModalIframe');
+            if (titleEl) titleEl.innerText = item.title;
+
+            let embedUrl = item.url || '';
+            if (embedUrl.includes('youtube.com/watch?v=')) {
+                embedUrl = embedUrl.replace('watch?v=', 'embed/');
+            } else if (embedUrl.includes('youtu.be/')) {
+                embedUrl = embedUrl.replace('youtu.be/', 'www.youtube.com/embed/');
+            } else if (!embedUrl || embedUrl === '#') {
+                embedUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+            }
+
+            if (iframe) iframe.src = embedUrl;
+            document.getElementById('videoPlayerModal')?.classList.remove('hidden');
+        }
+
+        function closeVideoPlayerModal() {
+            const iframe = document.getElementById('videoModalIframe');
+            if (iframe) iframe.src = '';
+            document.getElementById('videoPlayerModal')?.classList.add('hidden');
+        }
+
+        function handleMaterialDownload(id) {
+            const item = materialsData.find(m => m.id === id);
+            if (!item) return;
+
+            if (item.type === 'video') {
+                watchVideoModal(id);
+                return;
+            }
+
+            if (item.url && item.url.startsWith('data:')) {
+                const link = document.createElement('a');
+                link.href = item.url;
+                link.download = `${item.title.replace(/\s+/g, '_')}.${item.type === 'ppt' ? 'pptx' : 'pdf'}`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showToast('Pengunduhan berkas dimulai...', 'success');
+            } else if (item.url && item.url !== '#') {
+                window.open(item.url, '_blank');
+            } else {
+                generateDocView(item.title, item.type.toUpperCase(), item.desc);
+            }
+        }
+
+        function handlePklDownload(id) {
+            const item = pklDocsData.find(p => p.id === id);
+            if (!item) return;
+
+            if (item.url && item.url.startsWith('data:')) {
+                const link = document.createElement('a');
+                link.href = item.url;
+                link.download = `${item.title.replace(/\s+/g, '_')}.${item.type === 'ppt' ? 'pptx' : 'pdf'}`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showToast('Pengunduhan berkas PKL dimulai...', 'success');
+            } else if (item.url && item.url !== '#') {
+                window.open(item.url, '_blank');
+            } else {
+                generateDocView(item.title, item.type.toUpperCase(), item.desc);
+            }
+        }
+
+        function generateDocView(title, type, desc) {
+            const printWin = window.open('', '_blank', 'width=800,height=700');
+            if (printWin) {
+                printWin.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>${title} - UPT SMKN 3 Pinrang</title>
+                        <style>
+                            body { font-family: 'Segoe UI', Arial, sans-serif; padding: 40px; color: #0f172a; background: #fff; line-height: 1.6; }
+                            .header { border-bottom: 3px double #0891b2; padding-bottom: 15px; text-align: center; margin-bottom: 25px; }
+                            .header h1 { margin: 0; font-size: 20px; color: #0f172a; text-transform: uppercase; }
+                            .header p { margin: 5px 0 0 0; font-size: 12px; color: #64748b; }
+                            .badge { display: inline-block; padding: 4px 10px; background: #ecfeff; color: #0891b2; border: 1px solid #a5f3fc; font-size: 11px; font-weight: bold; border-radius: 6px; margin-bottom: 15px; }
+                            .title { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #0f172a; }
+                            .desc { font-size: 13px; color: #334155; background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 10px; margin-bottom: 25px; }
+                            .footer { margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 15px; font-size: 11px; color: #94a3b8; text-align: center; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>UPT SMKN 3 PINRANG</h1>
+                            <p>Portal Matematika Terapan & Repository PKL Industri 2026 • Pencipta: ${creatorName}</p>
+                        </div>
+                        <div class="badge">BERKAS RESMI: ${type}</div>
+                        <div class="title">${title}</div>
+                        <div class="desc">${desc}</div>
+                        <p style="font-size:12px; color:#475569;">Dokumen ini diterbitkan secara digital oleh SMKN 3 Pinrang untuk kebutuhan pembelajaran dan administrasi Praktik Kerja Lapangan (PKL).</p>
+                        <div class="footer">
+                            Printed on ${new Date().toLocaleDateString('id-ID')} • JejakAngka.id • SMKN 3 Pinrang
+                        </div>
+                        <script>window.onload = function() { window.print(); };<\/script>
+                    </body>
+                    </html>
+                `);
+                printWin.document.close();
+            }
+        }
+
+        // VISUAL ANALYTICS CHARTS
+        function renderAnalyticsCharts() {
+            const ctxBMW = document.getElementById('chartBMW')?.getContext('2d');
+            const ctxKeselarasan = document.getElementById('chartKeselarasan')?.getContext('2d');
+            if (!ctxBMW || !ctxKeselarasan) return;
+
+            if (bmwChartInstance) bmwChartInstance.destroy();
+            if (keselarasanChartInstance) keselarasanChartInstance.destroy();
+
+            const countKerja = alumniData.filter(d => d.status.includes('BEKERJA')).length;
+            const countWirausaha = alumniData.filter(d => d.status.includes('WIRAUSAHA')).length;
+            const countKuliah = alumniData.filter(d => d.status.includes('KULIAH')).length;
+            const countMencari = alumniData.filter(d => d.status.includes('MENCARI')).length;
+
+            bmwChartInstance = new Chart(ctxBMW, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Bekerja DUDI', 'Wirausaha', 'Kuliah', 'Mencari Kerja'],
+                    datasets: [{
+                        data: [countKerja, countWirausaha, countKuliah, countMencari],
+                        backgroundColor: ['#10b981', '#f59e0b', '#a855f7', '#ef4444'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 } } } }
+                }
+            });
+
+            keselarasanChartInstance = new Chart(ctxKeselarasan, {
+                type: 'bar',
+                data: {
+                    labels: ['TKRO', 'TKJ', 'DKV', 'TITL', 'AKL'],
+                    datasets: [{
+                        label: 'Sesuai Bidang DUDI (%)',
+                        data: [92, 88, 95, 90, 85],
+                        backgroundColor: '#38bdf8',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a3b8' } } },
+                    scales: {
+                        x: { ticks: { color: '#94a3b8' } },
+                        y: { ticks: { color: '#94a3b8' }, max: 100 }
+                    }
+                }
+            });
+        }
+
+        // TOAST & CONFIRM NOTIFICATIONS
+        function showToast(msg, type = 'info') {
+            let container = document.getElementById('toastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toastContainer';
+                container.className = 'fixed top-20 right-6 z-50 flex flex-col gap-2 pointer-events-none';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            let bg = 'bg-slate-900 border-cyan-500 text-cyan-300';
+            let icon = 'fa-circle-info text-cyan-400';
+            if (type === 'success') { bg = 'bg-slate-900 border-emerald-500 text-emerald-300'; icon = 'fa-circle-check text-emerald-400'; }
+            else if (type === 'error') { bg = 'bg-slate-900 border-red-500 text-red-300'; icon = 'fa-triangle-exclamation text-red-400'; }
+
+            toast.className = `px-4 py-3 rounded-2xl border ${bg} text-xs font-bold shadow-2xl flex items-center gap-2.5 pointer-events-auto transform translate-x-full transition-transform duration-300`;
+            toast.innerHTML = `<i class="fa-solid ${icon} text-base"></i><span>${msg}</span>`;
+
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.remove('translate-x-full'), 10);
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function showConfirm(msg, onConfirm) {
+            let modal = document.getElementById('confirmModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'confirmModal';
+                modal.className = 'fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+                document.body.appendChild(modal);
+            }
+
+            modal.innerHTML = `
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-xs w-full space-y-4 shadow-2xl text-center">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center justify-center text-lg font-bold mx-auto">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <p class="text-xs font-bold text-white leading-relaxed">${msg}</p>
+                    <div class="flex gap-2 pt-2">
+                        <button id="confirmYesBtn" class="flex-1 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-xs transition">Ya, Hapus</button>
+                        <button id="confirmNoBtn" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-xs transition">Batal</button>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+
+            document.getElementById('confirmYesBtn').onclick = function() {
+                modal.classList.add('hidden');
+                if (onConfirm) onConfirm();
+            };
+            document.getElementById('confirmNoBtn').onclick = function() {
+                modal.classList.add('hidden');
+            };
+        }
+
+        // PRINT & BROADCAST WA UTILITIES
+        function openPrintAlumniModal() {
+            const tbody = document.getElementById('printTableBody');
+            if (tbody) {
+                tbody.innerHTML = alumniData.map((d, i) => `
+                    <tr>
+                        <td class="p-2 border border-slate-800">${i + 1}</td>
+                        <td class="p-2 border border-slate-800 font-bold">${d.nama}</td>
+                        <td class="p-2 border border-slate-800">${d.lulusan}</td>
+                        <td class="p-2 border border-slate-800">${d.jurusan}</td>
+                        <td class="p-2 border border-slate-800 font-semibold">${d.status}</td>
+                        <td class="p-2 border border-slate-800">${d.tempat}</td>
+                        <td class="p-2 border border-slate-800">${d.posisi}</td>
+                    </tr>
+                `).join('');
+            }
+            document.getElementById('printAlumniModal')?.classList.remove('hidden');
+        }
+
+        function closePrintAlumniModal() {
+            document.getElementById('printAlumniModal')?.classList.add('hidden');
+        }
+
+        function doPrintAlumni() {
+            const printWin = window.open('', '_blank', 'width=900,height=700');
+            if (printWin) {
+                printWin.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Laporan Data Alumni - SMKN 3 Pinrang</title>
+                        <style>
+                            body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; color: #000; background: #fff; }
+                            h2 { text-align: center; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
+                            p { text-align: center; font-size: 11px; color: #475569; margin: 0 0 20px 0; }
+                            table { width: 100%; border-collapse: collapse; font-size: 11px; }
+                            th, td { border: 1px solid #64748b; padding: 6px 8px; text-align: left; }
+                            th { background-color: #f1f5f9; font-weight: bold; }
+                        </style>
+                    </head>
+                    <body>
+                        <h2>LAPORAN REKAPITULASI TRACER STUDY ALUMNI</h2>
+                        <p>UPT SMKN 3 PINRANG • KARYA GURU: ${creatorName} • PROGRAM 10.000 KARYA DIGITAL GURU 2026</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Alumni</th>
+                                    <th>Tahun</th>
+                                    <th>Jurusan</th>
+                                    <th>Status</th>
+                                    <th>Instansi / DUDI</th>
+                                    <th>Posisi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${alumniData.map((d, i) => `
+                                    <tr>
+                                        <td>${i + 1}</td>
+                                        <td>${d.nama}</td>
+                                        <td>${d.lulusan}</td>
+                                        <td>${d.jurusan}</td>
+                                        <td>${d.status}</td>
+                                        <td>${d.tempat}</td>
+                                        <td>${d.posisi}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </body>
+                    </html>
+                `);
+                printWin.document.close();
+            }
+        }
+
+        function openParentBroadcastModal(targetParam, wa) {
+            let nama = targetParam;
+            let targetWa = wa;
+
+            if (typeof targetParam === 'number') {
+                const item = alumniData[targetParam];
+                if (item) {
+                    nama = item.nama;
+                    targetWa = item.wa;
+                }
+            }
+
+            closeBroadcastPanelModal();
+
+            if (document.getElementById('bcNama')) document.getElementById('bcNama').value = nama || '';
+            if (document.getElementById('bcWa')) document.getElementById('bcWa').value = targetWa || '';
+            const msg = `Assalamu Alaikum Wr. Wb. Bapak/Ibu Wali Alumni dari Sdr/i *${nama}*.\n\nMohon bantuan mengisi/mengonfirmasi status penelusuran lulusan (Tracer Study) SMKN 3 Pinrang:\n1. Bekerja\n2. Kuliah\n3. Wirausaha\n4. Belum Bekerja\n\nBalas pesan ini dengan angka (1/2/3/4) & nama tempat kerja/kampus. Terima kasih!`;
+            if (document.getElementById('bcMsgPreview')) document.getElementById('bcMsgPreview').value = msg;
+            document.getElementById('broadcastModal')?.classList.remove('hidden');
+        }
+
+        function closeBroadcastModal() {
+            document.getElementById('broadcastModal')?.classList.add('hidden');
+        }
+
+        function openBroadcastPanelModal() {
+            const list = document.getElementById('bcAlumniList');
+            if (list) {
+                list.innerHTML = alumniData.map((d, i) => `
+                    <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center text-xs gap-2">
+                        <div>
+                            <div class="font-bold text-white">${d.nama} <span class="text-[10px] text-cyan-400 font-normal">(${d.jurusan})</span></div>
+                            <div class="text-[10px] text-slate-400">Status: ${d.status} • HP: ${d.wa}</div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="sendDirectWaFromList(${i})" class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold text-[11px] transition flex items-center gap-1 shadow-md shadow-emerald-600/20" title="Kirim WA Langsung">
+                                <i class="fa-brands fa-whatsapp"></i> Kirim
+                            </button>
+                            <button onclick="openParentBroadcastModal(${i})" class="px-2.5 py-1.5 bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 rounded-lg font-bold text-[11px] transition" title="Edit Pesan">
+                                <i class="fa-solid fa-pen-to-square"></i> Draft
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            document.getElementById('broadcastPanelModal')?.classList.remove('hidden');
+        }
+
+        function sendDirectWaFromList(index) {
+            const d = alumniData[index];
+            if (!d || !d.wa) {
+                showToast('Nomor WhatsApp belum diisi.', 'error');
+                return;
+            }
+            let formattedWa = d.wa.replace(/\D/g, '');
+            if (formattedWa.startsWith('0')) formattedWa = '62' + formattedWa.slice(1);
+
+            const msg = `Assalamu Alaikum Wr. Wb. Bapak/Ibu Wali Alumni dari Sdr/i *${d.nama}*.\n\nMohon bantuan mengisi/mengonfirmasi status penelusuran lulusan (Tracer Study) SMKN 3 Pinrang:\n1. Bekerja\n2. Kuliah\n3. Wirausaha\n4. Belum Bekerja\n\nBalas pesan ini dengan angka (1/2/3/4) & nama tempat kerja/kampus. Terima kasih!`;
+            const waUrl = `https://api.whatsapp.com/send?phone=${formattedWa}&text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, '_blank');
+            showToast(`Membuka WhatsApp untuk ${d.nama}...`, 'success');
+        }
+
+        function closeBroadcastPanelModal() {
+            document.getElementById('broadcastPanelModal')?.classList.add('hidden');
+        }
+
+        function sendParentWaDirect() {
+            const wa = document.getElementById('bcWa')?.value.trim();
+            const msg = document.getElementById('bcMsgPreview')?.value;
+            if (!wa) {
+                showToast('Nomor WhatsApp belum diisi.', 'error');
+                return;
+            }
+            let formattedWa = wa.replace(/\D/g, '');
+            if (formattedWa.startsWith('0')) formattedWa = '62' + formattedWa.slice(1);
+
+            const waUrl = `https://api.whatsapp.com/send?phone=${formattedWa}&text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, '_blank');
+            showToast('Membuka WhatsApp...', 'success');
+        }
+
+        function copyBcText() {
+            const msg = document.getElementById('bcMsgPreview')?.value;
+            if (!msg) return;
+            navigator.clipboard.writeText(msg).then(() => {
+                showToast('Teks pesan broadcast berhasil disalin!', 'success');
+            }).catch(() => {
+                showToast('Gagal menyalin teks.', 'error');
+            });
+        }
+
+        function fetchLiveCSV() {
+            const url = document.getElementById('csvUrlInput')?.value.trim();
+            if (!url) {
+                showToast('Silakan tempelkan tautan CSV publik Google Sheets terlebih dahulu.', 'error');
+                return;
+            }
+            showToast('Menghubungkan ke Google Sheets CSV...', 'info');
+            fetch(url)
+                .then(res => res.text())
+                .then(csv => {
+                    const lines = csv.split('\n').filter(l => l.trim() !== '');
+                    if (lines.length > 1) {
+                        const newItems = [];
+                        for (let i = 1; i < lines.length; i++) {
+                            const cols = lines[i].split(',').map(c => c.replace(/^"|"$/g, '').trim());
+                            if (cols.length >= 4) {
+                                newItems.push({
+                                    nama: cols[0] || 'Alumni',
+                                    lulusan: cols[1] || '2025',
+                                    jurusan: cols[2] || 'Teknik Kendaraan Ringan',
+                                    status: (cols[3] || 'BEKERJA').toUpperCase(),
+                                    tempat: cols[4] || 'DUDI Mitra',
+                                    posisi: cols[5] || 'Staf',
+                                    wa: cols[6] || '6285200000000',
+                                    keselarasan: 'Sesuai'
+                                });
+                            }
+                        }
+                        if (newItems.length > 0) {
+                            alumniData = newItems;
+                            saveToLocalStorage();
+                            renderCards();
+                            showToast(`Berhasil menyinkronkan ${newItems.length} data alumni dari Google Sheets!`, 'success');
+                        }
+                    }
+                })
+                .catch(err => {
+                    showToast('Gagal memuat CSV Google Sheets. Pastikan akses CSV diset ke Publik.', 'error');
+                });
+        }
+
+        function exportToCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,Nama Alumni,Tahun Lulus,Jurusan,Status BMW,Instansi / DUDI,Posisi / Jabatan,No WhatsApp\n";
+            alumniData.forEach(d => {
+                csvContent += `"${d.nama}","${d.lulusan}","${d.jurusan}","${d.status}","${d.tempat}","${d.posisi}","${d.wa}"\n`;
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Data_Alumni_SMKN3_Pinrang_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("Rekapitulasi Data Alumni berhasil di-export ke CSV!", "success");
+        }
+
+        function toggleAiChat() {
+            const drawer = document.getElementById('aiChatDrawer');
+            if (drawer) drawer.classList.toggle('hidden');
+        }
+
+        function sendQuickPrompt(promptText) {
+            const input = document.getElementById('aiInput');
+            if (input) {
+                input.value = promptText;
+                sendAiMessage();
+            }
+        }
+
+        async function sendAiMessage() {
+            const input = document.getElementById('aiInput');
+            const container = document.getElementById('aiChatMessages');
+            if (!input || !container) return;
+            const text = input.value.trim();
+            if (!text) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'bg-cyan-950/60 p-3 rounded-2xl border border-cyan-500/30 text-cyan-200 self-end ml-auto max-w-[85%] font-medium';
+            userMsg.innerText = text;
+            container.appendChild(userMsg);
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+
+            const loadingMsg = document.createElement('div');
+            loadingMsg.id = 'aiLoadingMsg';
+            loadingMsg.className = 'bg-slate-950 p-3 rounded-2xl border border-slate-800 text-cyan-400 leading-relaxed flex items-center gap-2 italic text-[11px]';
+            loadingMsg.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> AI Tutor sedang menganalisis data & menghitung...';
+            container.appendChild(loadingMsg);
+            container.scrollTop = container.scrollHeight;
+
+            try {
+                const responseText = await queryGeminiAi(text);
+                if (document.getElementById('aiLoadingMsg')) document.getElementById('aiLoadingMsg').remove();
+
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'bg-slate-950 p-3 rounded-2xl border border-slate-800 text-slate-300 leading-relaxed space-y-1';
+                aiMsg.innerHTML = formatMarkdownText(responseText);
+                container.appendChild(aiMsg);
+            } catch (err) {
+                if (document.getElementById('aiLoadingMsg')) document.getElementById('aiLoadingMsg').remove();
+
+                const fallbackText = getSmartLocalFallback(text);
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'bg-slate-950 p-3 rounded-2xl border border-slate-800 text-slate-300 leading-relaxed space-y-1';
+                aiMsg.innerHTML = formatMarkdownText(fallbackText);
+                container.appendChild(aiMsg);
+            }
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // INITIALIZATION ON PAGE LOAD
+        window.onload = function() {
+            loadFromLocalStorage();
+            updateCreatorDisplayUI();
+            updateRoleUI();
+            renderMaterials();
+            renderPklDocs();
+            renderCards();
+            calcPklRab();
+            calcTrigo();
+            calcBEP();
+        };
+    </script>
+</body>
+</html>
